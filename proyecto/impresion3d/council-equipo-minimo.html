@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Council: Equipo Mínimo Impresión 3D — Cardel, Veracruz</title>
+<style>
+  :root{
+    --verde:#16a34a; --verde-bg:#dcfce7;
+    --amarillo:#ca8a04; --amarillo-bg:#fef9c3;
+    --rojo:#dc2626; --rojo-bg:#fee2e2;
+    --azul:#2563eb; --azul-bg:#dbeafe;
+    --gris:#64748b; --gris-bg:#f1f5f9;
+    --ink:#0f172a; --muted:#475569;
+    --line:#e2e8f0;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink); background: var(--gris-bg);
+    margin:0; padding:0; line-height:1.6;
+  }
+  .wrap{ max-width: 900px; margin: 0 auto; padding: 24px 18px 60px; }
+
+  header{
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color:#fff; padding: 28px 22px; border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(37,99,235,.18);
+    margin-bottom: 22px;
+  }
+  header h1{ margin:0 0 6px; font-size: 1.7rem; line-height:1.25; }
+  header .sub{ opacity:.92; font-size:.95rem; margin:0; }
+  header .meta{ font-size:.8rem; opacity:.85; margin-top:10px; }
+
+  .badge{
+    display:inline-block; padding:3px 10px; border-radius:999px;
+    font-size:.72rem; font-weight:700; letter-spacing:.03em;
+    background: rgba(255,255,255,.18); color:#fff; margin-right:6px;
+  }
+
+  h2{
+    font-size: 1.25rem; margin: 30px 0 12px;
+    padding-bottom: 6px; border-bottom: 2px solid var(--line);
+  }
+  h3{ font-size: 1.05rem; margin: 22px 0 8px; color: var(--ink); }
+
+  .card{
+    background: var(--card); border-radius: 12px; padding: 18px 20px;
+    box-shadow: 0 2px 8px rgba(15,23,42,.06); margin: 14px 0;
+    border: 1px solid var(--line);
+  }
+
+  table{ width:100%; border-collapse: collapse; margin: 10px 0; font-size:.95rem; }
+  th, td{ padding: 9px 12px; border-bottom: 1px solid var(--line); text-align:left; }
+  th{ background: var(--gris-bg); font-weight:700; color:var(--ink); }
+  tr.total td{ font-weight:800; background: var(--verde-bg); border-top:2px solid var(--verde); }
+  td.num{ text-align:right; font-variant-numeric: tabular-nums; white-space:nowrap; }
+
+  .verde{ color: var(--verde); } .verde-bg{ background: var(--verde-bg); }
+  .amarillo{ color: var(--amarillo); } .amarillo-bg{ background: var(--amarillo-bg); }
+  .rojo{ color: var(--rojo); } .rojo-bg{ background: var(--rojo-bg); }
+  .azul{ color: var(--azul); } .azul-bg{ background: var(--azul-bg); }
+
+  .pill{
+    display:inline-block; padding:2px 9px; border-radius:999px;
+    font-size:.78rem; font-weight:700; margin-right:4px;
+  }
+  .pill-v{ background:var(--verde-bg); color:var(--verde); border:1px solid var(--verde);}
+  .pill-a{ background:var(--amarillo-bg); color:var(--amarillo); border:1px solid var(--amarillo);}
+  .pill-r{ background:var(--rojo-bg); color:var(--rojo); border:1px solid var(--rojo);}
+
+  ul, ol{ padding-left: 22px; }
+  li{ margin: 5px 0; }
+
+  .big-num{ font-size:1.5rem; font-weight:800; color: var(--verde); }
+
+  .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 640px){ .grid2{ grid-template-columns: 1fr; } }
+
+  .check{ color: var(--verde); font-weight:800; }
+  .cross{ color: var(--rojo); font-weight:800; }
+
+  .quote{
+    border-left: 4px solid var(--azul); background: var(--azul-bg);
+    padding: 12px 16px; border-radius: 0 8px 8px 0; font-style: italic;
+    margin: 12px 0; color: #1e3a8a;
+  }
+
+  .members{
+    display:flex; flex-wrap:wrap; gap:8px; margin: 10px 0;
+  }
+  .member{
+    background: var(--card); border:1px solid var(--line); border-radius:8px;
+    padding:6px 12px; font-size:.85rem;
+  }
+  .member b{ color: var(--azul); }
+
+  .step{
+    counter-increment: step; position:relative; padding-left: 38px; margin: 10px 0;
+  }
+  .step::before{
+    content: counter(step); position:absolute; left:0; top:0;
+    width:26px; height:26px; background:var(--azul); color:#fff;
+    border-radius:50%; font-weight:800; display:flex; align-items:center;
+    justify-content:center; font-size:.85rem;
+  }
+  .steps{ counter-reset: step; }
+
+  .warn{
+    background: var(--rojo-bg); border:1px solid var(--rojo);
+    border-radius: 10px; padding: 14px 16px; margin: 14px 0;
+  }
+  .warn h3{ color: var(--rojo); margin-top:0; }
+
+  .highlight{
+    background: var(--verde-bg); border:1px solid var(--verde);
+    border-radius: 10px; padding: 14px 16px; margin: 14px 0;
+  }
+  .highlight h3{ color: var(--verde); margin-top:0; }
+
+  details{ background: var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 14px; margin:10px 0; }
+  summary{ cursor:pointer; font-weight:700; color:var(--azul); }
+
+  footer{
+    margin-top: 30px; padding-top: 16px; border-top:1px solid var(--line);
+    color: var(--muted); font-size:.82rem;
+  }
+
+  @media print{
+    body{ background:#fff; }
+    .wrap{ max-width:100%; padding:0; }
+    header{ box-shadow:none; }
+    .card, details{ box-shadow:none; break-inside: avoid; }
+    a{ color: inherit; text-decoration:none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge">COUNCIL OF HIGH INTELLIGENCE</span>
+    <span class="badge">VEREDICTO UNÁNIME 5/5</span>
+    <h1>Equipo Mínimo para Arrancar tu Taller de Impresión 3D</h1>
+    <p class="sub">Ciudad Cardel, Veracruz — Panorama claro para pedirle a tu abuela (crédito Coppel / BBVA)</p>
+    <p class="meta">Convened: Musashi · Sun Tzu · Torvalds (1.5× domain) · Machiavelli · Munger — 3 rondas · 30 jun 2026</p>
+  </header>
+
+  <!-- RESUMEN EJECUTIVO -->
+  <section class="card highlight">
+    <h3>🟢 El panorama en una línea</h3>
+    <p>Comprar <b>UNA sola impresora</b> — la <b>Bambu Lab A1</b> — más filamento y básicos, por <span class="big-num">~$9,400–13,000 MXN</span>. <b>Sin resina, sin AMS, sin BBVA, sin equipo extra</b>. Vender primero, escalar después.</p>
+    <p style="margin:8px 0 0"><b>Tu aporte:</b> mínimo un tercio (~$3,000–3,500) en efectivo · <b>Tu abuela financia:</b> el resto vía Coppel · <b>Promesa firmada:</b> "te pago en 6 meses o devuelvo el equipo".</p>
+  </section>
+
+  <!-- PANEL -->
+  <h2>🏛️ ¿Quién deliberó tu caso?</h2>
+  <p>Cinco pensadores analizaron tu problema en 3 rondas (análisis independiente → cross-examen anónimo → posición final). El veredicto fue <b>unánime</b>.</p>
+  <div class="members">
+    <span class="member"><b>Musashi</b> — timing / golpe decisivo</span>
+    <span class="member"><b>Sun Tzu</b> — estrategia / terreno</span>
+    <span class="member"><b>Torvalds</b> ⭐1.5× — ingeniería / "ship it"</span>
+    <span class="member"><b>Machiavelli</b> — incentivos / dinámica familiar</span>
+    <span class="member"><b>Munger</b> — inversión / inversión (evitar la ruina)</span>
+  </div>
+
+  <!-- EQUIPO MÍNIMO -->
+  <h2>🧰 La lista de equipo mínimo (lo que le dices a tu abuela)</h2>
+
+  <div class="card">
+    <h3>🟢 Comprar AHORA (Fase 1)</h3>
+    <table>
+      <thead>
+        <tr><th>Equipo</th><th>Modelo / Detalle</th><th class="num">Precio MXN</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Impresora FDM</td><td><b>Bambu Lab A1</b> (sola, sin AMS) — calibra sola, lista en 15 min</td><td class="num">$7,769</td></tr>
+        <tr><td>Filamento PLA</td><td>3 a 5 carretes (~$400/kg)</td><td class="num">$1,200–1,500</td></tr>
+        <tr><td>Básicos</td><td>Cama extra, espátula, alcohol isopropílico, lijas, mesa</td><td class="num">$1,000–1,500</td></tr>
+        <tr><td>Laptop / Slicer</td><td>La que ya tienes + Bambu Studio (gratis)</td><td class="num">$0</td></tr>
+        <tr class="total"><td colspan="2"><b>TOTAL MÍNIMO</b></td><td class="num"><b>~$9,400–13,000</b></td></tr>
+      </tbody>
+    </table>
+    <p style="margin:6px 0 0; color:var(--muted); font-size:.85rem">Precios supuestos de junio 2026 (no cotización en firme). Verificar en tienda física antes de comprar.</p>
+  </div>
+
+  <div class="card warn">
+    <h3>🔴 NO comprar ahora (segunda batalla, solo después de vender)</h3>
+    <table>
+      <thead>
+        <tr><th>Equipo</th><th>Por qué NO ahora</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Resina MSLA (Elegoo Mars/Saturn)</td><td>Exige ventilación tóxica, lavado, curado UV, EPP. Fuera de tu círculo de competencia hoy.</td></tr>
+        <tr><td>AMS Combo (multicolor)</td><td>Lujo. El cliente que quiera multicolor: pinta o ensambla. Posponer.</td></tr>
+        <tr><td>Acondicionamiento del taller ($15,000)</td><td>Solo obligatorio si hay resina (ventilación forzada por toxicidad). Sin resina, no se necesita.</td></tr>
+        <tr><td>P1S / segunda impresora / Saturn 4</td><td>"Architecture astronaut": optimiza un negocio que aún no tiene una venta.</td></tr>
+        <tr><td>BBVA</td><td>No agregues un segundo acreedor institucional encima del crédito Coppel de tu abuela.</td></tr>
+        <tr><td>Marketing pagado $12,000 / contador caro</td><td>WhatsApp + Facebook Cardel basta para el piloto.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="text-align:center; color:var(--muted); font-size:.9rem; margin:18px 0;">
+    Comparativa: el dossier original pedía <b>$231,000</b> en 2 etapas.<br>
+    El Council redujo la inversión inicial a <b class="verde">~$10,000–13,000</b> (≈ 5% del dossier). <b>Menos equipo, mismo primer paso: validar que sabes vender.</b>
+  </p>
+
+  <!-- LA PARTE MORAL -->
+  <h2>💛 Cómo le pides a tu abuela (lo más importante)</h2>
+  <div class="card">
+    <p>4 de 5 miembros marcaron esto como <span class="pill pill-r">DEALBREAKER</span>: endeudar a tu abuela por más de ~$10–13k, o pedir resina sin ventas, es <b>activamente dañino</b>.</p>
+
+    <h3>1. La abuela NO es inversionista — es fiadora</h3>
+    <p>Un inversionista <i>tiene</i> capacidad de pérdida; tu abuela, <b>no</b>. Tratarla como "inversión" esconde que <b>ella absorbe todo el riesgo y tú poco</b>. Sé honesto con eso. (Machiavelli)</p>
+
+    <h3>2. Coppel cobra 38–60% anual</h3>
+    <p>Cada mes sin ventas, tu abuela paga intereses <b>invisibles</b> que tú nunca ves en tu modelo. Por eso hay que <b>vender rápido</b>. (Munger)</p>
+
+    <h3>3. Tú aportas un tercio (~$3,000–3,500) en efectivo</h3>
+    <p>Registrado en libreta como "aporte propio". Si no puedes juntar eso, el negocio aún no está listo. Esto es tu <b>skin-in-the-game</b> real. (Torvalds / Sun Tzu)</p>
+
+    <h3>4. Firma una promesa escrita</h3>
+    <div class="quote">"Erik se compromete a pagar a la abuela en 6 meses o devolver el equipo en buen estado si no hay tracción de ventas."</div>
+    <p>Esto convierte tu palabra en <b>compromiso exigible</b> y protege la mesa familiar. Sin esto, el "préstamo" es traslado de riesgo disfrazado de emprendimiento. (Machiavelli)</p>
+  </div>
+
+  <!-- PASOS -->
+  <h2>📋 Plan de acción (paso a paso)</h2>
+  <div class="card">
+    <h3>🎯 Tu único paso inmediato</h3>
+    <p class="verde" style="font-weight:700; margin:0 0 12px;">Verificar físicamente la Bambu Lab A1 en Coppel de Cardel/Xalapa y su precio de lista, antes del 31 jul 2026.</p>
+    <p style="margin:0">Sin ese dato, el juego no empieza. (Munger lo llamó "el test innegociable".) Si Coppel no la lista o cobra >25% sobreprecio → cancela, no le pidas a tu abuela.</p>
+  </div>
+
+  <div class="card">
+    <h3>Siguientes pasos (en orden)</h3>
+    <div class="steps">
+      <div class="step"><b>Llamar/visitar Coppel</b> (y revisar coppel.com) para confirmar existencia, modelo exacto y precio de la A1 — antes de hablar con tu abuela.</div>
+      <div class="step"><b>Juntar tu tercio (~$3,000–3,500)</b> y registrarlo en una libreta como "aporte propio".</div>
+      <div class="step"><b>Redactar y firmar la promesa escrita</b> de devolución del equipo a 6 meses si no hay tracción.</div>
+      <div class="step"><b>Hablar con tu abuela</b> mostrando: la lista de equipo mínima, tu aporte propio, la promesa firmada y el plan de 3–5 ventas en 6 semanas.</div>
+      <div class="step"><b>Configurar la A1 el día que llegue</b> (15 min, calibración automática) e imprimir 3 piezas de catálogo (una utilitaria, una decorativa, un prototipo) para foto/venta.</div>
+      <div class="step"><b>Lanzar catálogo mínimo</b> (fotos WhatsApp/Facebook Cardel) y perseguir <b>3–5 ventas reales en 6 semanas</b> como puerta a la segunda ronda (resina).</div>
+    </div>
+  </div>
+
+  <!-- KILL CRITERIA -->
+  <h2>🔴 Kill criteria — cuándo el plan se cancela</h2>
+  <div class="card warn">
+    <ul>
+      <li>Si para el <b>31 jul 2026</b> la Bambu Lab A1 <b>no aparece listada físicamente en Coppel</b> (o ruta alterna verificada) con sobreprecio &lt; 25% sobre $7,769 → <b>cancela la compra, no le pidas a tu abuela</b>.</li>
+      <li>Si a <b>6 semanas de la primera impresión</b> (meta: 31 ago 2026) <b>no cierras 3–5 ventas reales</b> (cobradas y entregadas) → <b>devuelve/vende el equipo, no pidas la segunda ronda (resina)</b>.</li>
+      <li>Si <b>no firmas la promesa escrita ni aportas tu tercio</b> antes de la compra → <b>no se mueve el crédito de tu abuela</b>.</li>
+    </ul>
+  </div>
+
+  <!-- LO QUE NO SABEMOS -->
+  <h2>❓ Lo que el Council NO sabe (necesito de ti)</h2>
+  <div class="card amarillo-bg" style="border:1px solid var(--amarillo);">
+    <ul>
+      <li>¿Coppel lista físicamente la A1? ¿A qué precio y plazo?</li>
+      <li>¿Cuánto puedes juntar <b>hoy mismo</b> en efectivo para tu tercio?</li>
+      <li>¿Hay demanda real en Cardel para piezas FDM/PLA (repuestos, prototipos, regalos) o el mercado exige resina (joyería/miniaturas/dental)?</li>
+      <li>¿Qué tasa exacta le daría Coppel a tu abuela? Sin eso no calculamos la carga mensual de intereses.</li>
+    </ul>
+  </div>
+
+  <!-- VOTACIÓN -->
+  <h2>📊 Votación del Council</h2>
+  <div class="card">
+    <table>
+      <thead>
+        <tr><th>Miembro</th><th>Peso</th><th>Opción</th><th>Confianza</th><th>Dealbreaker</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Musashi</td><td class="num">1.0</td><td>A1 sola sin extras</td><td>High</td><td class="rojo">No</td></tr>
+        <tr><td>Sun Tzu</td><td class="num">1.0</td><td>A1 sola sin extras</td><td>High</td><td class="rojo">Sí</td></tr>
+        <tr><td>Torvalds ⭐</td><td class="num">1.5</td><td>A1 sola sin extras</td><td>High</td><td class="rojo">Sí</td></tr>
+        <tr><td>Machiavelli</td><td class="num">1.0</td><td>A1 sola sin extras</td><td>High</td><td class="rojo">Sí</td></tr>
+        <tr><td>Munger</td><td class="num">1.0</td><td>A1 sola sin extras</td><td>High</td><td class="rojo">Sí</td></tr>
+        <tr class="total"><td colspan="2"><b>W_total = 5.5</b></td><td><b>5.5 unánime</b></td><td colspan="2">Umbral 2/3 = 3.667 ✅ superado</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- INSIGHTS -->
+  <h2>💡 Aporte clave de cada miembro</h2>
+  <div class="card">
+    <ul>
+      <li><b>Musashi</b> — Una sola estocada hoy; posponer resina/AMS hasta que las ventas confirmen el camino (3–5, no 10–15, para no enfriar el momentum).</li>
+      <li><b>Sun Tzu</b> — Dos batallas, no guerra total; nombró el activo real: la <b>confianza familiar</b>, no la impresora.</li>
+      <li><b>Torvalds</b> — La complejidad prematura es la raíz de todo mal; un dossier de $231k sin una venta es autoengaño.</li>
+      <li><b>Machiavelli</b> — El peligro es moral, no técnico; la promesa firmada convierte obligación difusa en deuda exigible.</li>
+      <li><b>Munger</b> — Invierte lo que evita la ruina, no lo que maximiza el sueño; Coppel al 38–60% es la ruina disfrazada de crédito.</li>
+    </ul>
+  </div>
+
+  <!-- PUNTOS DE TENSIÓN -->
+  <h2>⚖️ Dónde los miembros chocaron (y convergieron)</h2>
+  <div class="card">
+    <ul>
+      <li><b>Monto exacto:</b> Torvalds/Musashi/Munger bajaron a ~$10,500–13,000 (FDM puro); Machiavelli en Ronda 1 sostenía ~$22,000–26,000 incluyendo lavado/curado/EPP. En Ronda 2 <b>revisó a la baja</b> al aceptar que su lista metía "resina disfrazada de mínimo" → convergencia final en ~$10–13k.</li>
+      <li><b>Aporte de Erik:</b> Musashi pidió $2,000–3,000; Sun Tzu/Machiavelli exigieron "un tercio" (~$3,000–3,500). Síntesis: ~$3,000–3,500 como piso.</li>
+      <li><b>Umbral de segunda ronda:</b> Musashi pidió 3–5 ventas; Machiavelli pidió 8–10. Convergencia: <b>3–5 ventas reales en 4–6 semanas</b>.</li>
+    </ul>
+  </div>
+
+  <!-- HONESTIDAD DEL PROCESO -->
+  <h2>🚦 Honestidad del proceso (semáforos)</h2>
+  <div class="grid2">
+    <div class="card verde-bg" style="border:1px solid var(--verde);">
+      <h3 style="color:var(--verde);">🟢 Consenso fuerte</h3>
+      <p>5/5 miembros, 5.5/5.5 peso, umbral 3.667 superado con holgura.</p>
+    </div>
+    <div class="card amarillo-bg" style="border:1px solid var(--amarillo);">
+      <h3 style="color:var(--amarillo);">🟡 Provider spread = 1/5</h3>
+      <p>Toda la deliberación corrió en un solo modelo (glm-5.2). Riesgo de groupthink mitigado porque los miembros sí chocaron en montos antes de converger.</p>
+    </div>
+    <div class="card amarillo-bg" style="border:1px solid var(--amarillo);">
+      <h3 style="color:var(--amarillo);">🟡 Datos del expediente</h3>
+      <p>Recuperados del historial de sesiones (la carpeta <code>Proyecto-Impresion3D-Veracruz</code> fue borrada del disco). Precios = supuestos de jun-2026, no cotizaciones en firme.</p>
+    </div>
+    <div class="card rojo-bg" style="border:1px solid var(--rojo);">
+      <h3 style="color:var(--rojo);">🔴 Expediente perdido</h3>
+      <p>El atajo <code>.lnk</code> apunta a una carpeta inexistente. Las 11 sesiones previas (S0–S10) sobreviven solo en el historial. <b>Recomendado: reconstruir el expediente a disco.</b></p>
+    </div>
+  </div>
+
+  <!-- DATOS DEL EXPEDIENTE -->
+  <details>
+    <summary>📊 Datos recuperados del expediente original (referencia)</summary>
+    <h3>Impresoras FDM Bambu Lab (verificadas jun-2026)</h3>
+    <table>
+      <tr><th>Modelo</th><th class="num">Precio MXN</th></tr>
+      <tr><td>Bambu Lab A1</td><td class="num">$7,769</td></tr>
+      <tr><td>Bambu Lab A1 Combo (con AMS)</td><td class="num">$11,319</td></tr>
+      <tr><td>Bambu Lab P1S</td><td class="num">$12,099</td></tr>
+      <tr><td>Bambu Lab P1S Combo</td><td class="num">$15,999</td></tr>
+    </table>
+    <h3>Impresoras de resina MSLA</h3>
+    <table>
+      <tr><th>Modelo</th><th class="num">Precio MXN</th></tr>
+      <tr><td>Elegoo Mars 5 Ultra 9K (Walmart)</td><td class="num">$11,438</td></tr>
+      <tr><td>Elegoo Mars 5 Ultra 9K (3D Market+IVA)</td><td class="num">~$9,990</td></tr>
+      <tr><td>Elegoo Saturn 4 Ultra</td><td class="num">~$14,000</td></tr>
+    </table>
+    <h3>Insumos (precio por material)</h3>
+    <table>
+      <tr><th>Material</th><th class="num">Precio</th></tr>
+      <tr><td>PLA</td><td class="num">$400/kg</td></tr>
+      <tr><td>PETG</td><td class="num">$500/kg</td></tr>
+      <tr><td>ABS</td><td class="num">$550/kg</td></tr>
+      <tr><td>Resina estándar</td><td class="num">$700/litro</td></tr>
+      <tr><td>Resina tough</td><td class="num">$1,300/litro</td></tr>
+    </table>
+    <h3>Resultados financieros del dossier original (escenario base)</h3>
+    <p>VAN +$443,796 · TIR 130.8% · Payback mes 17 · Punto equilibrio $26,250/mes · OPEX fijo $21,000/mes (piloto en casa, renta $0).</p>
+    <p style="color:var(--muted); font-size:.85rem">Nota: estos resultados asumen el CAPEX completo del dossier ($231,000). El Council los considera proyecciones, no validación — primero hay que vender.</p>
+  </details>
+
+  <footer>
+    <p><b>Council of High Intelligence</b> — veredicto generado el 30 jun 2026 · Panel: Musashi, Sun Tzu, Torvalds (1.5×), Machiavelli, Munger · Modo: Full (3 rondas) · Routing: single-provider (glm-5.2) · schema_version 1 · panel_size 5 · rounds_run 3 · provider_count 1 · fallbacks: none</p>
+    <p>Este documento es un análisis deliberativo, no asesoría financiera profesional. Verifica precios y disponibilidad en tienda antes de cualquier compra. Practica solo en entornos propios o autorizados.</p>
+  </footer>
+
+</div>
+</body>
+</html>

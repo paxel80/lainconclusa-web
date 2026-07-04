@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impresión 3D · Cardel, Veracruz — La Inconclusa</title>
+<meta name="description" content="Proyecto de inversión: negocio de impresión y diseño 3D en Ciudad Cardel, Veracruz. Recursos, análisis y dossier — por paxel80.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#08080a;--surface:rgba(255,255,255,.035);--border:rgba(255,255,255,.08);--border2:rgba(217,169,60,.22);--text:#ECECEF;--muted:#9a9aa6;--faint:#6b6b78;--gold:#D9A93C;--gold2:#f0c75e;--bone:#F2EDE0;--radius:18px;--max:1060px;--green:#3ddc84}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;background-image:radial-gradient(800px circle at 75% -5%,rgba(217,169,60,.08),transparent 45%)}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,8,10,.55);border-bottom:1px solid var(--border)}
+  .nav-in{max-width:var(--max);margin:0 auto;padding:15px 24px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:'Space Grotesk';font-weight:700;font-size:1.08rem;display:flex;align-items:center;gap:9px;color:var(--text);text-decoration:none}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--gold2),var(--gold));box-shadow:0 0 12px var(--gold)}
+  .back{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}.back:hover{color:var(--gold2)}
+  header{padding:80px 0 50px}
+  .crumb{font-family:'Space Grotesk';color:var(--gold);font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+  .status{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;color:var(--muted);border:1px solid var(--border);background:var(--surface);padding:6px 14px;border-radius:100px;margin-bottom:22px}
+  .sdot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
+  h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:18px}
+  h1 .grad{background:linear-gradient(120deg,var(--gold2),var(--gold) 50%,var(--bone));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .lead{font-size:clamp(1.02rem,2.2vw,1.22rem);color:var(--muted);max-width:620px}
+  section{padding:36px 0}
+  .eyebrow{font-family:'Space Grotesk';color:var(--gold);font-size:.8rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;margin-bottom:20px}
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(2,1fr)}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  a.card{display:block;text-decoration:none;color:inherit;background:rgba(12,12,15,.55);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:transform .2s,border-color .2s,background .2s}
+  a.card:hover{transform:translateY(-5px);border-color:var(--border2);background:rgba(20,20,24,.7)}
+  .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(217,169,60,.16),rgba(217,169,60,.04));border:1px solid var(--border2);margin-bottom:18px;color:var(--gold2);font-size:1.3rem}
+  .card h3{font-family:'Space Grotesk';font-weight:600;font-size:1.18rem;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.94rem;margin-bottom:12px}
+  .card .go{color:var(--gold2);font-size:.86rem;font-weight:600}
+  .card .live{color:var(--green)}
+  .ficha{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;border:1px solid var(--border);border-radius:var(--radius);padding:30px;background:rgba(12,12,15,.5)}
+  @media(max-width:700px){.ficha{grid-template-columns:repeat(2,1fr);gap:24px}}
+  .ficha .k{color:var(--faint);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+  .ficha .v{font-family:'Space Grotesk';font-weight:600;font-size:1.05rem;color:var(--text)}
+  footer{border-top:1px solid var(--border);padding:34px 0;margin-top:30px;color:var(--faint);font-size:.88rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--gold2)}
+</style>
+</head>
+<body>
+<nav><div class="nav-in">
+  <a class="brand" href="/"><span class="dot"></span> La Inconclusa</a>
+  <a class="back" href="/#proyectos">← Todos los proyectos</a>
+</div></nav>
+
+<header><div class="wrap">
+  <div class="crumb">Proyecto · Inversión</div>
+  <div class="status"><span class="sdot"></span> Dossier listo · buscando socio</div>
+  <h1>Impresión <span class="grad">3D</span><br>Cardel, Veracruz</h1>
+  <p class="lead">Un negocio de impresión y diseño 3D para Ciudad Cardel y la región: prototipado, piezas a pedido y diseño. Mercado, finanzas y plan — analizados y redactados con IA. Aquí están todos sus recursos.</p>
+</div></header>
+
+<section><div class="wrap">
+  <div class="eyebrow">Los recursos</div>
+  <div class="grid">
+    <a class="card" href="./council-todas-las-posibilidades.html">
+      <div class="ic">🏛️</div>
+      <h3>Council: la mejor ruta</h3>
+      <p>18 sabios deliberan TODO el abanico de creación y uso de la impresora y fijan la mejor ruta por fases para tu contexto.</p>
+      <span class="go live">● Abrir veredicto →</span>
+    </a>
+    <a class="card" href="./council-equipo-minimo.html">
+      <div class="ic">⚖️</div>
+      <h3>Council: Equipo Mínimo</h3>
+      <p>18 sabios-IA deliberan cuál es el equipo mínimo para arrancar el negocio sin sobre-invertir — con semáforos por decisión.</p>
+      <span class="go live">● Abrir reporte →</span>
+    </a>
+    <a class="card" href="https://portafolio.lainconclusa.com/html/impresion-3d.html" target="_blank" rel="noopener">
+      <div class="ic">📊</div>
+      <h3>Dossier de inversión</h3>
+      <p>Paquete completo para socio: mercado, finanzas (CAPEX/OPEX, TIR/VAN, payback), catálogo y sala de datos.</p>
+      <span class="go">Ver portafolio →</span>
+    </a>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">La ficha</div>
+  <div class="ficha">
+    <div><div class="k">Ubicación</div><div class="v">Cardel, Ver.</div></div>
+    <div><div class="k">Tipo</div><div class="v">Inversión</div></div>
+    <div><div class="k">Sector</div><div class="v">Prototipado 3D</div></div>
+    <div><div class="k">Estado</div><div class="v">Dossier listo</div></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:12px">
+  <span>paxel80 © 2026 · La Inconclusa</span>
+  <a href="mailto:paxel80@lainconclusa.com">paxel80@lainconclusa.com</a>
+</div></footer>
+</body>
+</html>

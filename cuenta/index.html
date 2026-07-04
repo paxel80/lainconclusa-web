@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi cuenta — La Inconclusa</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#08080a;--border:rgba(255,255,255,.1);--border2:rgba(217,169,60,.35);--text:#ECECEF;--muted:#9a9aa6;--gold:#D9A93C;--gold2:#f0c75e;--green:#3ddc84}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;background-image:radial-gradient(700px circle at 70% -10%,rgba(217,169,60,.1),transparent 50%)}
+  nav{padding:16px 24px;border-bottom:1px solid var(--border)}
+  .brand{font-family:'Space Grotesk';font-weight:700;display:flex;align-items:center;gap:9px;color:var(--text);text-decoration:none;font-size:1.05rem}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--gold2),var(--gold));box-shadow:0 0 12px var(--gold)}
+  main{flex:1;display:grid;place-items:center;padding:30px 20px}
+  .card{width:100%;max-width:460px;background:rgba(14,14,18,.7);border:1px solid var(--border);border-radius:18px;padding:36px 32px;backdrop-filter:blur(8px);text-align:center;display:none}
+  .av{width:64px;height:64px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(217,169,60,.2),rgba(217,169,60,.05));border:1px solid var(--border2);font-size:1.8rem}
+  h1{font-family:'Space Grotesk';font-weight:700;font-size:1.5rem;margin-bottom:8px}
+  .email{color:var(--gold2);font-weight:600;margin-bottom:4px;word-break:break-all}
+  .badge{display:inline-block;margin:6px 0 14px;font-size:.78rem;font-weight:600;padding:4px 12px;border-radius:100px;border:1px solid var(--border2);color:var(--gold2)}
+  .sub{color:var(--muted);font-size:.95rem;margin-bottom:22px}
+  .btn{display:block;width:100%;padding:13px;border:none;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;font-family:inherit;text-decoration:none;margin-top:10px}
+  .btn-pri{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1a1404}
+  .btn-sec{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text)}
+  .loading{color:var(--muted);font-size:.95rem}
+  .maint .av{font-size:2rem;background:linear-gradient(135deg,rgba(224,170,60,.15),rgba(255,255,255,.02))}
+</style>
+</head>
+<body>
+<nav><a class="brand" href="/"><span class="dot"></span> La Inconclusa</a></nav>
+<main>
+  <p class="loading" id="loading">Cargando…</p>
+  <div class="card" id="admin">
+    <div class="av">👑</div>
+    <h1>Panel de administrador</h1>
+    <div class="email" id="adminEmail"></div>
+    <span class="badge">● ACCESO TOTAL</span>
+    <p class="sub">Tienes control completo de La Inconclusa. (Aquí irán tus herramientas de administración cuando me digas qué quieres gestionar.)</p>
+    <a class="btn btn-pri" href="/">Ir al sitio</a>
+    <button class="btn btn-sec" id="outA" type="button">Cerrar sesión</button>
+  </div>
+  <div class="card maint" id="maint">
+    <div class="av">🔧</div>
+    <h1>En mantenimiento</h1>
+    <p class="sub">Estamos preparando tu espacio. Vuelve pronto — ¡gracias por registrarte! 🛠️</p>
+    <a class="btn btn-pri" href="/">Volver al inicio</a>
+    <button class="btn btn-sec" id="outM" type="button">Cerrar sesión</button>
+  </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SB_URL="https://mttohgmueztahyxuubkp.supabase.co";
+  const SB_KEY="sb_publishable_Rv8jOya7UmX1l1pu_mWgfA_EM4x4tBW";
+  const sb=supabase.createClient(SB_URL,SB_KEY);
+  function logout(){ sb.auth.signOut().then(()=>location.href='/entrar'); }
+  (async()=>{
+    const {data}=await sb.auth.getSession();
+    if(!data.session){location.href='/entrar';return;}
+    document.getElementById('loading').style.display='none';
+    // El rol viene de la BASE DE DATOS (tabla profiles, protegida por RLS) — no del navegador.
+    let isAdmin=false;
+    try{
+      const {data:prof}=await sb.from('profiles').select('role').eq('id',data.session.user.id).maybeSingle();
+      isAdmin = !!prof && prof.role==='admin';
+    }catch(e){ isAdmin=false; }
+    if(isAdmin){
+      document.getElementById('adminEmail').textContent=data.session.user.email;
+      document.getElementById('admin').style.display='block';
+    } else {
+      document.getElementById('maint').style.display='block';
+    }
+  })();
+  document.getElementById('outA').addEventListener('click',logout);
+  document.getElementById('outM').addEventListener('click',logout);
+</script>
+</body>
+</html>

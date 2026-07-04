@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flujo n8n · La Fábrica de Código — La Inconclusa</title>
+<meta name="description" content="Visualización del flujo de la Fábrica de Código estilo n8n: del Capataz a los obreros, el inspector y la aprobación de Erik.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#f7f8fa; --canvas:#fafafa;
+    --panel:#ffffff; --border:#e4e6eb; --border2:#d0d3da;
+    --text:#1a1d24; --muted:#6b7280; --faint:#9aa0ab;
+    --n8n-red:#ff5d5d; --n8n-blue:#3b82f6; --n8n-green:#22c55e;
+    --n8n-purple:#8b5cf6; --n8n-orange:#f59e0b; --n8n-teal:#14b8a6;
+    --n8n-pink:#ec4899; --n8n-indigo:#6366f1; --n8n-lime:#84cc16;
+    --node-bg:#ffffff; --node-shadow:0 1px 3px rgba(0,0,0,.12),0 4px 12px rgba(0,0,0,.08);
+    --node-radius:10px;
+  }
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+
+  /* === Top bar (estilo n8n) === */
+  .topbar{position:sticky;top:0;z-index:50;height:52px;background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 18px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .topbar-left{display:flex;align-items:center;gap:14px}
+  .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1rem}
+  .logo .mark{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#ff5d5d,#ff8a5d);display:grid;place-items:center;color:#fff;font-size:.85rem;font-weight:700;box-shadow:0 2px 8px rgba(255,93,93,.4)}
+  .crumb{color:var(--muted);font-size:.86rem}
+  .crumb b{color:var(--text)}
+  .topbar-right{display:flex;align-items:center;gap:10px}
+  .pill{font-size:.74rem;padding:4px 11px;border-radius:100px;border:1px solid var(--border2);color:var(--muted);background:var(--panel);display:inline-flex;align-items:center;gap:6px}
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--n8n-green);box-shadow:0 0 0 0 rgba(34,197,94,.5);animation:pulse 2s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 6px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+  .pill.amber .dot{background:var(--n8n-orange)}
+  .btn-sm{font-size:.8rem;padding:6px 13px;border-radius:8px;border:1px solid var(--border2);background:var(--panel);color:var(--text);cursor:pointer;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .btn-sm:hover{background:#f0f1f4}
+
+  /* === Layout: canvas + sidebar === */
+  .shell{display:flex;height:calc(100vh - 52px)}
+  .canvas-wrap{flex:1;position:relative;overflow:auto;background:var(--canvas);
+    background-image:radial-gradient(circle, #e4e6eb 1px, transparent 1px);
+    background-size:22px 22px;}
+  .canvas{position:relative;min-width:1100px;min-height:760px;width:100%;height:100%}
+
+  /* === Panel lateral derecho (estilo n8n node detail) === */
+  .sidebar{width:340px;flex-shrink:0;background:var(--panel);border-left:1px solid var(--border);overflow-y:auto;padding:0}
+  .sd-head{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--panel);z-index:2}
+  .sd-head h3{font-size:1rem;font-weight:700;display:flex;align-items:center;gap:9px}
+  .sd-head .close{cursor:pointer;color:var(--faint);font-size:1.2rem;border:none;background:none}
+  .sd-head .close:hover{color:var(--text)}
+  .sd-body{padding:16px 18px}
+  .sd-body p{color:var(--muted);font-size:.88rem;margin-bottom:12px}
+  .sd-body .label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:600;margin:14px 0 6px}
+  .sd-body .kv{display:flex;justify-content:space-between;font-size:.84rem;padding:7px 0;border-bottom:1px solid var(--border)}
+  .sd-body .kv .k{color:var(--muted)} .sd-body .kv .v{color:var(--text);font-weight:500}
+  .sd-body code{background:#f0f1f4;padding:1px 6px;border-radius:4px;font-size:.8rem;font-family:ui-monospace,monospace}
+  .badge-role{display:inline-block;font-size:.7rem;padding:3px 9px;border-radius:6px;font-weight:600;color:#fff}
+  @media(max-width:900px){.sidebar{display:none}.canvas{min-width:100%}}
+
+  /* === Nodos (estilo n8n) === */
+  .node{position:absolute;width:188px;background:var(--node-bg);border:1px solid var(--border2);border-radius:var(--node-radius);box-shadow:var(--node-shadow);cursor:pointer;transition:transform .15s,box-shadow .15s,border-color .15s}
+  .node:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,.12),0 8px 20px rgba(0,0,0,.1)}
+  .node.active{border-color:var(--text);box-shadow:0 0 0 3px rgba(59,130,246,.25),var(--node-shadow)}
+  .node-head{display:flex;align-items:center;gap:9px;padding:11px 12px 9px}
+  .node-ic{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;color:#fff;flex-shrink:0;font-size:.95rem}
+  .node-title{font-size:.84rem;font-weight:600;line-height:1.2}
+  .node-sub{font-size:.7rem;color:var(--muted);margin-top:1px}
+  .node-body{padding:0 12px 11px}
+  .node-tag{font-size:.66rem;padding:2px 7px;border-radius:5px;background:#f0f1f4;color:var(--muted);display:inline-block;margin-right:4px;margin-top:4px}
+  .node-tag.live{background:rgba(34,197,94,.12);color:#15803d}
+  .node-tag.free{background:rgba(132,204,22,.14);color:#4d7c0f}
+  .node-tag.todo{background:rgba(245,158,11,.14);color:#b45309}
+
+  /* Puertos (handles) estilo n8n */
+  .port{position:absolute;width:11px;height:11px;border-radius:50%;background:#fff;border:2px solid var(--border2);z-index:3}
+  .port.in{left:-6px;top:50%;transform:translateY(-50%)}
+  .port.out{right:-6px;top:50%;transform:translateY(-50%)}
+  .port.multi{border-color:var(--n8n-blue)}
+  .port.success{border-color:var(--n8n-green)}
+  .port.fail{border-color:var(--n8n-red)}
+
+  /* Líneas (SVG bezier) */
+  .edges{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+  .edge{fill:none;stroke-width:2;transition:stroke .2s}
+  .edge.normal{stroke:#c7cad1}
+  .edge.success{stroke:var(--n8n-green);stroke-dasharray:5 4;animation:dash 1.2s linear infinite}
+  .edge.fail{stroke:var(--n8n-red);stroke-dasharray:5 4;animation:dash 1.2s linear infinite}
+  .edge.route{stroke:var(--n8n-purple);stroke-dasharray:5 4;animation:dash 1.2s linear infinite}
+  @keyframes dash{to{stroke-dashoffset:-18}}
+  .edge-label{font-size:9px;fill:var(--muted);font-weight:600}
+
+  /* Caja de "grupo" (fan-out) estilo n8n sticky note */
+  .group{position:absolute;border:1.5px dashed #c7cad1;border-radius:14px;background:rgba(255,255,255,.4);padding:10px}
+  .group .glabel{position:absolute;top:-11px;left:14px;background:var(--canvas);padding:0 8px;font-size:.72rem;font-weight:600;color:var(--muted)}
+
+  /* Leyenda flotante */
+  .legend{position:absolute;bottom:18px;left:18px;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;box-shadow:var(--node-shadow);font-size:.78rem;z-index:5}
+  .legend h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--faint);margin-bottom:8px}
+  .legend .row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+  .legend .swatch{width:14px;height:3px;border-radius:2px}
+  .legend .swatch.normal{background:#c7cad1}
+  .legend .swatch.success{background:var(--n8n-green)}
+  .legend .swatch.fail{background:var(--n8n-red)}
+  .legend .swatch.route{background:var(--n8n-purple)}
+
+  /* Zoom controls */
+  .zoom{position:absolute;bottom:18px;right:18px;display:flex;flex-direction:column;gap:4px;z-index:5}
+  .zoom button{width:34px;height:34px;border:1px solid var(--border2);background:var(--panel);border-radius:8px;cursor:pointer;font-size:1rem;color:var(--muted);box-shadow:var(--node-shadow)}
+  .zoom button:hover{background:#f0f1f4;color:var(--text)}
+
+  .hint{position:absolute;top:14px;left:18px;background:rgba(255,255,255,.92);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:.76rem;color:var(--muted);z-index:5;display:flex;align-items:center;gap:7px}
+  .hint .kbd{background:#f0f1f4;border:1px solid var(--border2);border-radius:4px;padding:1px 5px;font-size:.7rem;font-family:ui-monospace,monospace}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="logo"><span class="mark">n8</span> <span>La Fábrica de Código</span></div>
+    <span class="crumb">· Workflow · <b>Capataz → Cuadrilla → Inspector → Aprobación</b></span>
+  </div>
+  <div class="topbar-right">
+    <span class="pill"><span class="dot"></span> En construcción</span>
+    <span class="pill amber"><span class="dot"></span> Fase 1</span>
+    <a class="btn-sm" href="https://github.com/paxel80/la-inconclusa" target="_blank" rel="noopener">Repo ↗</a>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="canvas-wrap" id="canvasWrap">
+    <div class="canvas" id="canvas">
+
+      <div class="hint">
+        <span class="kbd">Click</span> un nodo para ver su ficha →
+      </div>
+
+      <!-- Grupo fan-out: obreros -->
+      <div class="group" style="left:430px;top:118px;width:540px;height:330px">
+        <span class="glabel">🧰 Cuadrilla · git worktrees (ramas aisladas)</span>
+      </div>
+
+      <!-- SVG de las conexiones bezier -->
+      <svg class="edges" viewBox="0 0 1100 760" preserveAspectRatio="none">
+        <!-- Trigger → Capataz -->
+        <path id="e1" class="edge normal" d="M188,120 C260,120 300,120 372,120"/>
+        <!-- Capataz → fan-out (3 obreros) -->
+        <path class="edge route" d="M560,134 C600,134 600,180 430,180"/>
+        <path class="edge route" d="M560,140 C640,140 640,290 430,290"/>
+        <path class="edge route" d="M560,146 C660,146 660,400 430,400"/>
+        <!-- Obreros → Inspector (fan-in) -->
+        <path class="edge success" d="M618,180 C680,180 680,250 742,250"/>
+        <path class="edge success" d="M618,290 C680,290 680,258 742,258"/>
+        <path class="edge success" d="M618,400 C680,400 680,266 742,266"/>
+        <!-- Inspector → ¿pasa? bifurcación -->
+        <path class="edge fail" d="M930,246 C980,246 980,160 942,160"/>
+        <path class="edge success" d="M930,274 C980,274 980,510 942,510"/>
+        <!-- Inspector fail → Fix loop (vuelve a obreros) -->
+        <path class="edge fail" d="M942,160 C860,160 860,100 600,100 C560,100 560,150 560,150" stroke-dasharray="4 3"/>
+        <!-- Approve → Erik -->
+        <path class="edge normal" d="M942,510 C990,510 990,600 872,600"/>
+        <!-- Erik approve → Merge -->
+        <path class="edge success" d="M744,614 C680,614 680,650 602,650"/>
+        <!-- Erik reject → loop back a Capataz -->
+        <path class="edge fail" d="M744,596 C700,596 700,90 470,90 C440,90 440,108 440,108" stroke-dasharray="4 3"/>
+
+        <!-- etiquetas -->
+        <text class="edge-label" x="265" y="112">orden</text>
+        <text class="edge-label" x="600" y="172">reparte</text>
+        <text class="edge-label" x="690" y="222">entrega ✓</text>
+        <text class="edge-label" x="965" y="200">✗ falla</text>
+        <text class="edge-label" x="965" y="430">✓ pasa</text>
+        <text class="edge-label" x="920" y="556">aprueba</text>
+        <text class="edge-label" x="660" y="640">merge ✅</text>
+        <text class="edge-label" x="700" y="84">rechaza ↺</text>
+      </svg>
+
+      <!-- ===== NODOS ===== -->
+
+      <!-- 1. Trigger: Erik -->
+      <div class="node" data-node="trigger" style="left:8px;top:96px">
+        <span class="port out success"></span>
+        <div class="node-head">
+          <div class="node-ic" style="background:var(--n8n-pink)">👨</div>
+          <div><div class="node-title">Erik (Trigger)</div><div class="node-sub">da la orden</div></div>
+        </div>
+        <div class="node-body"><span class="node-tag">humano</span><span class="node-tag">Telegram/chat</span></div>
+      </div>
+
+      <!-- 2. Capataz / Vibe Kanban -->
+      <div class="node" data-node="capataz" style="left:372px;top:96px">
+        <span class="port in"></span><span class="port out multi"></span>
+        <div class="node-head">
+          <div class="node-ic" style="background:var(--n8n-blue)">📋</div>
+          <div><div class="node-title">Capataz (Tablero)</div><div class="node-sub">Vibe Kanban · parte la tarea</div></div>
+        </div>
+        <div class="node-body"><span class="node-tag live">director</span><span class="node-tag">fan-out</span></div>
+      </div>
+
+      <!-- 3. Obrero 1: OpenCode -->
+      <div class="node" data-node="opencode" style="left:430px;top:152px">
+        <span class="port in"></span><span class="port out success"></span>
+        <div class="node-head">
+          <div class="node-ic" style="background:var(--n8n-indigo)">👷</div>
+          <div><div class="node-title">Obrero · OpenCode</div><div class="node-sub">escribe código en su worktree</div></div>
+        </div>
+        <div class="node-body"><span class="node-tag free">$0</span><span class="node-tag">headless</span></div>
+      </div>
+
+      <!-- 4. Obrero 2: Aider -->
+      <div class="node" data-node="aider" style="left:430px;top:262px">
+        <span class="port in"></span><span class="port out success"></span>
+        <div class="node-head">
+          <div class="node-ic" style="background:var(--n8n-teal)">👷</div>
+          <div><div class="node-title">Obrero · Aider</div><div class="node-sub">edits + git commits</div></div>
+        </div>
+        <div class="node-body"><span class="node-tag free">$0</span><span class="node-tag">headless</span></div>
+      </div>
+
+      <!-- 5. Obrero 3: Cline/Kilo -->
+      <div class="node" data-node="cline" style="left:430px;top:372px">
+        <span class="port in"></span><span class="port out success"></span>
+        <div class="node-head">
+          <div class="node-ic" style="background:var(--n8n-orange)">👷</div>
+          <div><div class="node-title">Obrero · Cline / Kilo</div><div class="node-sub">r reasoning + tools</div></div>
+        </div>
+        <div class="node-body"><span class="node-tag free">$0</span><span class="node-tag">headless</span></div>
+      </div>
+
+      <!-- 6. Inspector -->
+      <div class="node" data-node="inspector" style="left:742px;top:228px">
+        <span class="port in"></span><span class="port out fail"></span><span class="port out success" style="top:auto;bottom:14px;transform:none"></span>
+        <div class="node-head">
+          <div class="node-ic" style="background:var(--n8n-purple)">🕵️</div>
+          <div><div class="node-title">Inspector</div><div class="node-sub">tests + build + juez (modelo ≠)</div></div>
+        </div>
+        <div class="node-body"><span class="node-tag todo">anti-autoaprueba</span><span class="node-tag">eval-driven</span></div>
+      </div>
+
+      <!-- 7. Fix loop -->
+      <div class="node" data-node="fix" style="left:942px;top:140px">
+        <span class="port in fail"></span><span class="port out route"></span>
+        <div class="node-head">
+          <div class="node-ic" style="background:var(--n8n-red)">🔁</div>
+          <div><div class="node-title">Bucle de arreglo</div><div class="node-sub">devuelve al obrero</div></div>
+        </div>
+        <div class="node-body"><span class="node-tag">generator/evaluator</span></div>
+      </div>
+
+      <!-- 8. Aprobación: Erik -->
+      <div class="node" data-node="approve" style="left:942px;top:490px">
+        <span class="port in success"></span><span class="port out success"></span><span class="port out fail" style="top:auto;bottom:14px;transform:none"></span>
+        <div class="node-head">
+          <div class="node-ic" style="background:var(--n8n-pink)">✅</div>
+          <div><div class="node-title">Erik aprueba</div><div class="node-sub">revisa el diff</div></div>
+        </div>
+        <div class="node-body"><span class="node-tag">humano</span><span class="node-tag">portón = NO default</span></div>
+      </div>
+
+      <!-- 9. Merge -->
+      <div class="node" data-node="merge" style="left:602px;top:626px">
+        <span class="port in success"></span><span class="port out success"></span>
+        <div class="node-head">
+          <div class="node-ic" style="background:var(--n8n-green)">🔀</div>
+          <div><div class="node-title">Merge → main</div><div class="node-sub">merge + push</div></div>
+        </div>
+        <div class="node-body"><span class="node-tag live">producción</span></div>
+      </div>
+
+      <!-- Leyenda -->
+      <div class="legend">
+        <h4>Conexiones</h4>
+        <div class="row"><span class="swatch normal"></span> flujo normal</div>
+        <div class="row"><span class="swatch route"></span> reparto (route)</div>
+        <div class="row"><span class="swatch success"></span> éxito ✓</div>
+        <div class="row"><span class="swatch fail"></span> fallo / bucle ✗</div>
+      </div>
+
+      <!-- Zoom -->
+      <div class="zoom">
+        <button id="zin" title="Acercar">+</button>
+        <button id="zout" title="Alejar">−</button>
+        <button id="zreset" title="Reset">⟲</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Sidebar detalle de nodo ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sd-head">
+      <h3 id="sd-title">Selecciona un nodo</h3>
+      <button class="close" id="sdClose">✕</button>
+    </div>
+    <div class="sd-body" id="sdBody">
+      <p style="color:var(--faint)">Haz clic en cualquier nodo del canvas para ver su ficha técnica: qué hace, qué herramienta es, qué cerebro usa y su estado.</p>
+    </div>
+  </aside>
+</div>
+
+<script>
+  // === Fichas de cada nodo (estilo "Node details" de n8n) ===
+  const fichas = {
+    trigger: {
+      title:'Erik (Trigger)', ic:'👨', color:'var(--n8n-pink)', role:'Humano · Dueño',
+      desc:'Erik da UNA orden natural: "crea una calculadora en HTML", "arregla este bug". El workflow entero empieza aquí.',
+      rows:[['Tipo','Trigger manual'],['Canal','Chat / Telegram'],['Salida','1 orden → Capataz'],['Costo','$0 (Erik)']],
+      nota:'El portón siempre está en NO hasta que Erik aprueba al final.'
+    },
+    capataz: {
+      title:'Capataz (Tablero)', ic:'📋', color:'var(--n8n-blue)', role:'Director · Orchestrator',
+      desc:'Recibe la orden, la descompone en tarjetas pequeñas y le asigna cada tarjeta al obrero que mejor la hace. Muestra todo en un tablero web.',
+      rows:[['Herramienta','Vibe Kanban'],['Patrón','Orchestrator-Worker (fan-out)'],['Cerebros','NVIDIA NIM · OpenRouter :free'],['Costo','$0'],['Estado','🟡 Fase 1']],
+      nota:'3–5 obreros a la vez máximo. En laptop de 8 GB: empezar con 2–3.'
+    },
+    opencode: {
+      title:'Obrero · OpenCode', ic:'👷', color:'var(--n8n-indigo)', role:'Worker · Coding agent',
+      desc:'Escribe código en su propio git worktree (cuartito aislado). Headless, sin GUI, controlado por el Capataz.',
+      rows:[['Herramienta','OpenCode CLI'],['Aislamiento','git worktree (rama propia)'],['Cerebro','qwen3-next-80b (NIM) · :free'],['Costo','$0'],['Estado','🟢 listo']],
+      nota:'Cada obrero ve SOLO su tarjeta y sus tools. No ve las llaves peligrosas.'
+    },
+    aider: {
+      title:'Obrero · Aider', ic:'👷', color:'var(--n8n-teal)', role:'Worker · Coding agent',
+      desc:'Edita archivos y hace git commits directamente. Bueno para refactors y ediciones precisas.',
+      rows:[['Herramienta','Aider'],['Aislamiento','git worktree'],['Cerebro','OpenRouter :free / Cerebras'],['Costo','$0'],['Estado','🟡 Fase 2']],
+      nota:'Usa un cerebro DISTINTO al de OpenCode para diversidad.'
+    },
+    cline: {
+      title:'Obrero · Cline / Kilo', ic:'👷', color:'var(--n8n-orange)', role:'Worker · Coding agent',
+      desc:'Razonamiento fuerte + uso de tools (MCP). Kilo CLI ya está instalado en la laptop.',
+      rows:[['Herramienta','Cline · Kilo CLI'],['Aislamiento','git worktree'],['Cerebro','Gemini / modelos :free'],['Costo','$0'],['Estado','🟡 Fase 2']],
+      nota:'Claude Code como obrero premium puntual (quema cuota).'
+    },
+    inspector: {
+      title:'Inspector', ic:'🕵️', color:'var(--n8n-purple)', role:'Evaluator · Verificación',
+      desc:'Corre tests + build sobre lo entregado. Un juez con un MODELO DISTINTO al obrero decide si pasa o falla (anti-autoaprobación).',
+      rows:[['Patrón','Generator/Evaluator loop'],['Verifica','tests + build + lint'],['Juez','modelo ≠ al del obrero'],['Regla','nunca el mismo cerebro aprueba'],['Estado','🟡 Fase 2']],
+      nota:'Si falla → bucle de arreglo. Si pasa → va a Erik.'
+    },
+    fix: {
+      title:'Bucle de arreglo', ic:'🔁', color:'var(--n8n-red)', role:'Loop · Fix',
+      desc:'Cuando el Inspector falla algo, devuelve la tarjeta al obrero con el feedback. El obrero corrige y se re-inspecciona.',
+      rows:[['Patrón','generator/evaluator'],['Iteraciones','máx 3 (configurable)'],['Salida','tarjeta corregida'],['Costo','$0']],
+      nota:'Tras 3 intentos sin pasar: escala a Erik para decidir.'
+    },
+    approve: {
+      title:'Erik aprueba', ic:'✅', color:'var(--n8n-pink)', role:'Gate · Human approval',
+      desc:'Erik revisa el diff (lo que cambió). Aprobar → merge. Rechazar → vuelve al Capataz. Por defecto: NO.',
+      rows:[['Tipo','Approval gate (manual)'],['Default','DENY (portón cerrado)'],['Canal','tablero / chat'],['Regla','Erik decide toda escritura destructiva']],
+      nota:'Ningún merge o push sin el OK explícito de Erik.'
+    },
+    merge: {
+      title:'Merge → main', ic:'🔀', color:'var(--n8n-green)', role:'Output · Producción',
+      desc:'Se hace merge de la rama del obrero a main y se publica. El worktree se limpia. Workflow completado.',
+      rows:[['Acción','git merge + push'],['Limpieza','worktree eliminado'],['Salida','código en main'],['Estado','🟢 listo']],
+      nota:'Snapshot reversible antes de cada merge. Nada se borra a ciegas.'
+    }
+  };
+
+  const sdTitle=document.getElementById('sd-title');
+  const sdBody=document.getElementById('sd-body');
+  const sidebar=document.getElementById('sidebar');
+  let activeNode=null;
+
+  function renderFicha(key){
+    const f=fichas[key]; if(!f) return;
+    if(activeNode) activeNode.classList.remove('active');
+    const el=document.querySelector(`[data-node="${key}"]`);
+    if(el){el.classList.add('active');activeNode=el;}
+    sdTitle.innerHTML=`<span style="display:inline-grid;place-items:center;width:24px;height:24px;border-radius:6px;background:${f.color};color:#fff;font-size:.8rem">${f.ic}</span> ${f.title}`;
+    let html=`<p>${f.desc}</p>
+      <div class="label">Rol</div>
+      <span class="badge-role" style="background:${f.color}">${f.role}</span>
+      <div class="label">Detalles</div>`;
+    f.rows.forEach(r=>{html+=`<div class="kv"><span class="k">${r[0]}</span><span class="v">${r[1]}</span></div>`;});
+    if(f.nota){html+=`<div class="label">Nota</div><p style="background:#f7f8fa;border-left:3px solid ${f.color};padding:9px 11px;border-radius:0 6px 6px 0;color:var(--text);font-size:.82rem;margin:0">${f.nota}</p>`;}
+    sdBody.innerHTML=html;
+  }
+
+  document.querySelectorAll('.node').forEach(n=>{
+    n.addEventListener('click',()=>renderFicha(n.dataset.node));
+  });
+  document.getElementById('sdClose').addEventListener('click',()=>{
+    if(activeNode) activeNode.classList.remove('active');
+    activeNode=null;
+    sdTitle.textContent='Selecciona un nodo';
+    sdBody.innerHTML='<p style="color:var(--faint)">Haz clic en cualquier nodo del canvas para ver su ficha técnica: qué hace, qué herramienta es, qué cerebro usa y su estado.</p>';
+  });
+
+  // === Zoom ===
+  let zoom=1; const canvas=document.getElementById('canvas'), wrap=document.getElementById('canvasWrap');
+  function applyZoom(){canvas.style.transform=`scale(${zoom})`;canvas.style.transformOrigin='0 0';}
+  document.getElementById('zin').onclick=()=>{zoom=Math.min(1.6,zoom+.1);applyZoom();};
+  document.getElementById('zout').onclick=()=>{zoom=Math.max(.6,zoom-.1);applyZoom();};
+  document.getElementById('zreset').onclick=()=>{zoom=1;applyZoom();canvas.scrollLeft=0;wrap.scrollTop=0;};
+</script>
+</body>
+</html>
