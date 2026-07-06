@@ -90,6 +90,52 @@ chmod 600 ~/.ssh/jr_nube1_sp</code></pre></li>
 <p>¡Entraste! 🎉 Ya estás en tu espacio. Escribe <code>ls</code> para ver qué hay, o <code>cat README.txt</code> para leer el mensaje de Erik.</p>
 <p>Para <b>salir</b>, escribe <code>exit</code>.</p>
 
+<h2>📱 Si entras desde un iPhone (recomendado para JR)</h2>
+<p>Como te vas a conectar desde el iPhone, lo más fácil es la app <b>Termius</b> (gratis). No necesitas laptop.</p>
+
+<div class="paso"><span class="paso-num">1</span> <b>Instala Termius</b> — App Store, busca "Termius" e instálalo. Ábrelo y créate una cuenta gratuita.</div>
+
+<div class="paso"><span class="paso-num">2</span> <b>Pásate la llave al iPhone</b> — Erik te mandará el archivo <code>jr_nube1_sp</code> por <b>Signal</b> o <b>chat secreto</b> de Telegram (nunca por chat normal). Guárdalo en la app <b>Archivos</b> del iPhone.</div>
+
+<div class="paso"><span class="paso-num">3</span> <b>Importa la llave en Termius</b> — dentro de Termius: menú <b>Keyring</b> → <b>+</b> → <b>Import from file</b> → elige <code>jr_nube1_sp</code>. Ponle un nombre (ej. "Llave JR").</div>
+
+<div class="paso"><span class="paso-num">4</span> <b>Añade el servidor</b> — menú <b>Hosts</b> → <b>New Host</b>:
+  <ul>
+    <li><b>Alias:</b> Mi Nube</li>
+    <li><b>Hostname:</b> <code>129.148.16.240</code></li>
+    <li><b>Port:</b> 22</li>
+    <li><b>Username:</b> <code>jr</code></li>
+    <li><b>Key:</b> elige "Llave JR" (la que importaste)</li>
+  </ul>
+  Guarda y toca el host para conectar. La primera vez te pregunta <i>Are you sure?</i> → <b>Yes</b>.</div>
+
+<p>¡Listo! Verás <code>jr@paxel-central:~$</code>. Para salir escribe <code>exit</code>.</p>
+
+<h2>📧 Tu correo: jr@lainconclusa.com (Zoho Mail)</h2>
+<p>Erik te creó un correo propio <b>jr@lainconclusa.com</b> (va con el mismo dominio del servidor). Se maneja con <b>Zoho Mail</b>.</p>
+
+<div class="paso"><span class="paso-num">1</span> <b>Instala la app Zoho Mail</b> — App Store, busca "Zoho Mail" e instálalo.</div>
+
+<div class="paso"><span class="paso-num">2</span> <b>Inicia sesión</b> — abre la app, entra con:
+  <ul>
+    <li><b>Correo:</b> <code>jr@lainconclusa.com</code></li>
+    <li><b>Contraseña:</b> la que Erik te dio <b>aparte</b> (por Signal o en persona, no por chat normal)</li>
+  </ul>
+</div>
+
+<p>¿Prefieres entrar por web? Ve a <a href="https://mail.zoho.com">https://mail.zoho.com</a> y entra con lo mismo.</p>
+
+<div class="aviso">
+  <b>⚠️ La contraseña del correo te la da Erik APARTE.</b> Si la pierdes, pídele que la resetee. No la guardes en notas abiertas ni la mandes por chat normal.
+</div>
+
+<p>¿Quieres configurarlo en la app <b>Mail nativa</b> del iPhone? Usa estos servidores:</p>
+<table>
+  <tr><th>Tipo</th><th>Servidor</th><th>Puerto</th><th>Cifrado</th></tr>
+  <tr><td>Entrante (IMAP)</td><td><code>imap.zoho.com</code></td><td>993</td><td>SSL</td></tr>
+  <tr><td>Saliente (SMTP)</td><td><code>smtp.zoho.com</code></td><td>465</td><td>SSL</td></tr>
+</table>
+
 <h2>🧰 Comandos útiles (para cuando entres)</h2>
 <table>
   <tr><th>Quiero...</th><th>Comando</th></tr>
