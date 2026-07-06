@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu espacio en la nube, JR</title>
+<style>
+  :root{
+    --verde:#16a34a; --rojo:#dc2626; --ambar:#d97706; --azul:#2563eb;
+    --fondo:#f8fafc; --texto:#1e293b; --gris:#64748b; --borde:#e2e8f0;
+  }
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;margin:0;background:var(--fondo);color:var(--texto);line-height:1.6}
+  .hoja{max-width:780px;margin:30px auto;background:#fff;padding:40px 50px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+  h1{color:var(--verde);margin-top:0;font-size:1.9rem}
+  h2{color:var(--texto);border-bottom:3px solid var(--verde);padding-bottom:6px;margin-top:34px;font-size:1.3rem}
+  h3{color:var(--azul);margin-top:24px}
+  code{background:#f1f5f9;padding:2px 6px;border-radius:4px;font-family:'Consolas',monospace;font-size:.92em;color:var(--azul)}
+  pre{background:#0f172a;color:#e2e8f0;padding:16px;border-radius:8px;overflow-x:auto;font-family:'Consolas',monospace;font-size:.88em}
+  pre code{background:transparent;color:inherit;padding:0}
+  table{width:100%;border-collapse:collapse;margin:14px 0}
+  th,td{padding:10px 12px;border:1px solid var(--borde);text-align:left;vertical-align:top}
+  th{background:#f1f5f9;font-weight:600}
+  .aviso{background:#fef3c7;border-left:5px solid var(--ambar);padding:14px 16px;border-radius:6px;margin:18px 0}
+  .aviso b{color:var(--ambar)}
+  .ok{color:var(--verde);font-weight:600}
+  .bad{color:var(--rojo);font-weight:600}
+  .chip{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.8rem;font-weight:600}
+  .chip-v{background:#dcfce7;color:#166534}
+  .chip-r{background:#fee2e2;color:#991b1b}
+  .paso{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:16px 18px;margin:14px 0}
+  .paso-num{display:inline-block;background:var(--azul);color:#fff;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;font-weight:700;margin-right:8px}
+  .meta{text-align:center;color:var(--gris);font-size:.85rem;border-top:1px solid var(--borde);padding-top:14px;margin-top:34px}
+  @media print{body{background:#fff}.hoja{margin:0;box-shadow:none;max-width:100%}}
+  @media (max-width:600px){.hoja{padding:24px;margin:12px}}
+</style>
+</head>
+<body>
+<div class="hoja">
+
+<h1>🚀 Tu espacio en la nube, JR</h1>
+<p>Erik te abrió un <b>espacio solo tuyo</b> en su servidor en la nube (está en São Paulo, gratis, encendido 24/7). Aquí te explico cómo entrar. Es fácil — sigue los pasos.</p>
+
+<h2>🎯 Qué tienes y qué NO tienes</h2>
+<table>
+  <tr><th>🟢 Sí puedes</th><th>🔴 No puedes</th></tr>
+  <tr><td>Entrar a tu espacio cuando quieras</td><td>Ser administrador (no puedes romper nada)</td></tr>
+  <tr><td>Crear archivos y carpetas en tu casa</td><td>Ver o tocar la carpeta de Erik</td></tr>
+  <tr><td>Salir y entrar las veces que quieras</td><td>Perder tu llave (si la pierdes, avísale a Erik)</td></tr>
+</table>
+<p>Es como un <b>casillero</b> en un gimnasio: tuyo, privado, pero no eres el dueño del gimnasio. 👍</p>
+
+<h2>🔑 Tu llave (lo más importante)</h2>
+<p>Erik te va a entregar <b>aparte</b> un archivo llamado:</p>
+<pre><code>jr_nube1_sp</code></pre>
+<p>Esa es tu <b>llave privada</b>. Es como la llave física de tu casa: <b>guárdala bien, NO la compartas, NO la subas a internet</b> (GitHub, Drive, etc.). Si alguien la tiene, puede entrar a tu casillero.</p>
+<div class="aviso">
+  <b>⚠️ Importante:</b> Erik <b>NO</b> te debe mandar esta llave por Telegram normal (no es privado). Pídele que te la dé <b>en persona</b>, por <b>Signal</b>, o por Telegram en <b>"chat secreto"</b> (el que se borra solo). Si ya te la mandó por Telegram normal, dile a Erik que te genere una llave nueva.
+</div>
+
+<h2>📥 Paso 1 — Guarda la llave en tu compu</h2>
+
+<div class="paso"><span class="paso-num">💻</span> <b>Si usas Windows:</b>
+<ol>
+  <li>Abre <b>PowerShell</b> (menú Inicio → escribe "PowerShell").</li>
+  <li>Copia y pega esto (crea la carpeta si no existe):
+    <pre><code>if (!(Test-Path "$HOME\.ssh")) { New-Item -ItemType Directory "$HOME\.ssh" }</code></pre></li>
+  <li><b>Copia el archivo <code>jr_nube1_sp</code></b> (el que Erik te dio) a esa carpeta. Puedes arrastrarlo con el explorador a: <code>C:\Users\TU_USUARIO\.ssh\</code></li>
+  <li>Protege la llave (copia y pega):
+    <pre><code>icacls "$HOME\.ssh\jr_nube1_sp" /inheritance:r /grant:r "$($env:USERNAME):(R)"</code></pre></li>
+</ol>
+</div>
+
+<div class="paso"><span class="paso-num">🍎</span> <b>Si usas Mac</b> o <span class="paso-num">🐧</span> <b>Linux:</b>
+<ol>
+  <li>Abre la <b>Terminal</b>.</li>
+  <li>Crea la carpeta y mueve la llave:
+    <pre><code>mkdir -p ~/.ssh
+mv ~/Downloads/jr_nube1_sp ~/.ssh/    # o donde la hayas guardado
+chmod 600 ~/.ssh/jr_nube1_sp</code></pre></li>
+</ol>
+</div>
+
+<h2>🔌 Paso 2 — Conéctate</h2>
+<p>En la misma terminal (Windows PowerShell o Mac/Linux), escribe este comando:</p>
+<pre><code>ssh -i ~/.ssh/jr_nube1_sp jr@129.148.16.240</code></pre>
+<p>La <b>primera vez</b> te preguntará si confías en esa máquina (<code>Are you sure you want to continue connecting?</code>). Escribe <code>yes</code> y da Enter.</p>
+<p>Después verás algo así:</p>
+<pre><code>jr@paxel-central:~$</code></pre>
+<p>¡Entraste! 🎉 Ya estás en tu espacio. Escribe <code>ls</code> para ver qué hay, o <code>cat README.txt</code> para leer el mensaje de Erik.</p>
+<p>Para <b>salir</b>, escribe <code>exit</code>.</p>
+
+<h2>🧰 Comandos útiles (para cuando entres)</h2>
+<table>
+  <tr><th>Quiero...</th><th>Comando</th></tr>
+  <tr><td>Ver dónde estoy</td><td><code>pwd</code></td></tr>
+  <tr><td>Listar archivos</td><td><code>ls -la</code></td></tr>
+  <tr><td>Crear una carpeta</td><td><code>mkdir mis_cosas</code></td></tr>
+  <tr><td>Crear/editar un archivo</td><td><code>nano mi_archivo.txt</code> (Ctrl+O guarda, Ctrl+X sale)</td></tr>
+  <tr><td>Ver un mensaje de Erik</td><td><code>cat README.txt</code></td></tr>
+  <tr><td>Salir</td><td><code>exit</code></td></tr>
+</table>
+
+<h2>❓ Si algo falla</h2>
+<table>
+  <tr><th>Mensaje</th><th>Qué hacer</th></tr>
+  <tr><td><code>Permission denied (publickey)</code></td><td>La llave no está bien puesta o no tiene permisos correctos. Repite el Paso 1.</td></tr>
+  <tr><td><code>Connection timed out</code></td><td>No hay internet, o el servidor se reinició. Espera 1 minuto y vuelve.</td></tr>
+  <tr><td><code>Host key verification failed</code></td><td>Borra la línea vieja con <code>ssh-keygen -R 129.148.16.240</code> y vuelve a intentar.</td></tr>
+  <tr><td>Perdiste la llave</td><td>Avísale a Erik. Te genera una nueva (la vieja se desactiva).</td></tr>
+</table>
+
+<h2>📞 Contacto</h2>
+<p>Cualquier cosa, escríbele a <b>Erik</b>. Él es el dueño del servidor.</p>
+
+<div class="meta">Servidor: <b>paxel-central</b> (São Paulo) · Tu usuario: <b>jr</b> · Creado: 6-jul-2026</div>
+
+</div>
+</body>
+</html>
