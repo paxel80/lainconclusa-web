@@ -1,0 +1,4 @@
+﻿User-agent: *
+Allow: /
+
+Sitemap: https://lainconclusa.com/proyecto-economico/sitemap.xml
