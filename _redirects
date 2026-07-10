@@ -1,0 +1,13 @@
+# GitHub Pages redirects for SPA-style routes
+/entrar           /entrar/index.html   200
+/registro         /registro/index.html 200
+/cuenta           /cuenta/index.html   200
+/proyecto/pos     /proyecto/pos/index.html 200
+/proyecto/impresion3d /proyecto/impresion3d/index.html 200
+/proyecto/pax80   /proyecto/pax80/index.html 200
+/proyecto/acuicola /proyecto/acuicola/index.html 200
+/proyecto/agtech  /proyecto/agtech/index.html 200
+/proyecto/mercadito /proyecto/mercadito/index.html 200
+/proyecto/taller-motos /proyecto/taller-motos/index.html 200
+/fabrica          /fabrica.html        200
+/workflow         /workflow.html       200

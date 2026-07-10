@@ -6,6 +6,7 @@
 <title>Flujo n8n · La Fábrica de Código — La Inconclusa</title>
 <meta name="description" content="Visualización del flujo de la Fábrica de Código estilo n8n: del Capataz a los obreros, el inspector y la aprobación de Erik.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
   :root{
@@ -17,10 +18,11 @@
     --n8n-pink:#ec4899; --n8n-indigo:#6366f1; --n8n-lime:#84cc16;
     --node-bg:#ffffff; --node-shadow:0 1px 3px rgba(0,0,0,.12),0 4px 12px rgba(0,0,0,.08);
     --node-radius:10px;
+    --gold:#D9A93C; --gold2:#f0c75e;
   }
   body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
 
-  /* === Top bar (estilo n8n) === */
+  /* Top bar estilo n8n + brand link */
   .topbar{position:sticky;top:0;z-index:50;height:52px;background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 18px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
   .topbar-left{display:flex;align-items:center;gap:14px}
   .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1rem}
@@ -35,14 +37,12 @@
   .btn-sm{font-size:.8rem;padding:6px 13px;border-radius:8px;border:1px solid var(--border2);background:var(--panel);color:var(--text);cursor:pointer;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
   .btn-sm:hover{background:#f0f1f4}
 
-  /* === Layout: canvas + sidebar === */
+  /* Layout: canvas + sidebar */
   .shell{display:flex;height:calc(100vh - 52px)}
-  .canvas-wrap{flex:1;position:relative;overflow:auto;background:var(--canvas);
-    background-image:radial-gradient(circle, #e4e6eb 1px, transparent 1px);
-    background-size:22px 22px;}
+  .canvas-wrap{flex:1;position:relative;overflow:auto;background:var(--canvas);background-image:radial-gradient(circle, #e4e6eb 1px, transparent 1px);background-size:22px 22px;}
   .canvas{position:relative;min-width:1100px;min-height:760px;width:100%;height:100%}
 
-  /* === Panel lateral derecho (estilo n8n node detail) === */
+  /* Sidebar derecho estilo n8n node detail */
   .sidebar{width:340px;flex-shrink:0;background:var(--panel);border-left:1px solid var(--border);overflow-y:auto;padding:0}
   .sd-head{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--panel);z-index:2}
   .sd-head h3{font-size:1rem;font-weight:700;display:flex;align-items:center;gap:9px}
@@ -57,7 +57,7 @@
   .badge-role{display:inline-block;font-size:.7rem;padding:3px 9px;border-radius:6px;font-weight:600;color:#fff}
   @media(max-width:900px){.sidebar{display:none}.canvas{min-width:100%}}
 
-  /* === Nodos (estilo n8n) === */
+  /* Nodos estilo n8n */
   .node{position:absolute;width:188px;background:var(--node-bg);border:1px solid var(--border2);border-radius:var(--node-radius);box-shadow:var(--node-shadow);cursor:pointer;transition:transform .15s,box-shadow .15s,border-color .15s}
   .node:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,.12),0 8px 20px rgba(0,0,0,.1)}
   .node.active{border-color:var(--text);box-shadow:0 0 0 3px rgba(59,130,246,.25),var(--node-shadow)}
@@ -71,7 +71,7 @@
   .node-tag.free{background:rgba(132,204,22,.14);color:#4d7c0f}
   .node-tag.todo{background:rgba(245,158,11,.14);color:#b45309}
 
-  /* Puertos (handles) estilo n8n */
+  /* Puertos estilo n8n */
   .port{position:absolute;width:11px;height:11px;border-radius:50%;background:#fff;border:2px solid var(--border2);z-index:3}
   .port.in{left:-6px;top:50%;transform:translateY(-50%)}
   .port.out{right:-6px;top:50%;transform:translateY(-50%)}
@@ -79,7 +79,7 @@
   .port.success{border-color:var(--n8n-green)}
   .port.fail{border-color:var(--n8n-red)}
 
-  /* Líneas (SVG bezier) */
+  /* Líneas SVG bezier */
   .edges{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
   .edge{fill:none;stroke-width:2;transition:stroke .2s}
   .edge.normal{stroke:#c7cad1}
@@ -89,7 +89,7 @@
   @keyframes dash{to{stroke-dashoffset:-18}}
   .edge-label{font-size:9px;fill:var(--muted);font-weight:600}
 
-  /* Caja de "grupo" (fan-out) estilo n8n sticky note */
+  /* Caja de grupo estilo n8n sticky note */
   .group{position:absolute;border:1.5px dashed #c7cad1;border-radius:14px;background:rgba(255,255,255,.4);padding:10px}
   .group .glabel{position:absolute;top:-11px;left:14px;background:var(--canvas);padding:0 8px;font-size:.72rem;font-weight:600;color:var(--muted)}
 
@@ -116,7 +116,7 @@
 
 <div class="topbar">
   <div class="topbar-left">
-    <div class="logo"><span class="mark">n8</span> <span>La Fábrica de Código</span></div>
+    <a href="/" class="logo" style="text-decoration:none;color:inherit"><span class="mark">n8</span> <span>La Fábrica de Código</span></a>
     <span class="crumb">· Workflow · <b>Capataz → Cuadrilla → Inspector → Aprobación</b></span>
   </div>
   <div class="topbar-right">
@@ -221,7 +221,7 @@
         <span class="port in"></span><span class="port out success"></span>
         <div class="node-head">
           <div class="node-ic" style="background:var(--n8n-orange)">👷</div>
-          <div><div class="node-title">Obrero · Cline / Kilo</div><div class="node-sub">r reasoning + tools</div></div>
+          <div><div class="node-title">Obrero · Cline / Kilo</div><div class="node-sub">reasoning + tools</div></div>
         </div>
         <div class="node-body"><span class="node-tag free">$0</span><span class="node-tag">headless</span></div>
       </div>
