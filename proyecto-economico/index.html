@@ -6,127 +6,615 @@
 <title>Panorama Económico Pax — Microfábrica de Manufactura Aditiva</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-<header class="topbar">
-  <div class="topbar-inner">
-    <div class="brand">Panorama <em>Económico</em> Pax</div>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav" aria-label="Abrir menú"><svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg><svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M6 18L18 6"/></svg><span class="lbl">Menú</span></button>
-    <nav id="mainnav">
-      <a href="index.html">Inicio</a>
-      <a href="mercado.html">Mercado</a>
-      <a href="variantes.html">Variantes</a>
-      <a href="catalogo.html">Catálogo</a>
-      <a href="agro-pesca.html">Agro · Pesca</a>
-      <a href="gobierno.html">Gobierno</a>
-      <a href="proyecciones.html">Proyecciones</a>
-      <a href="financiamiento.html">Financiamiento</a>
-      <a href="plan.html">Plan</a>
-    </nav>
-  </div>
-</header>
+<div class="bg-decorator"></div>
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">Microfábrica de manufactura aditiva · México</div>
-    <h1>Piezas funcionales con <em>verificación técnica</em> y trazabilidad, para la industria que no puede esperar importaciones.</h1>
-    <p class="lede">Cinco variantes de inversión, desde $10,900 hasta $750,000 MXN. Margen bruto del 85% por pieza, recuperación de capital entre 6 y 9 meses, y un catálogo real de 32 piezas para talleres, agro y acuacultura.</p>
-    <div class="hero-meta">
-      <div><span class="num">5</span><span class="lbl">Variantes</span></div>
-      <div><span class="num">$10.9k</span><span class="lbl">Inversión mínima</span></div>
-      <div><span class="num">85%</span><span class="lbl">Margen bruto</span></div>
-      <div><span class="num">32</span><span class="lbl">Piezas en catálogo</span></div>
-      <div><span class="num">18–24m</span><span class="lbl">Ruta A → E</span></div>
-    </div>
-  </div>
-</section>
+<!-- Mobile toggle -->
+<button class="mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  <span class="lbl">Menú</span>
+</button>
+<div class="sidebar-overlay" aria-hidden="true"></div>
 
-<div class="wrap">
-  <section>
-    <h2>Explora el panorama</h2>
-    <p style="max-width:680px;color:var(--stone);font-size:1.05rem;">Este sitio consolida el proyecto completo. Cada sección es una página dedicada con los números, supuestos y rutas de acción. Empieza por donde prefieras.</p>
-    <div class="portal-grid" style="margin-top:40px;">
-      <a class="portal-card" href="mercado.html">
-        <div class="num">01</div>
-        <h3>Mercado y oportunidad</h3>
-        <p>TAM, SAM, SOM del mercado de impresión 3D en México y el vacío que nadie llena: piezas funcionales con verificación técnica y trazabilidad.</p>
-        <span class="go">Abrir mercado</span>
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="brand">
+    🚀 Panorama<span>Económico</span>
+  </div>
+  <ul class="nav-links"></ul>
+  <div style="margin-top: auto; padding-top: 2rem; border-top: 1px solid var(--border-color); font-size: 0.75rem; color: var(--text-muted); text-align: center; font-weight: 500; line-height: 1.6;">
+    Microfábrica de Manufactura Aditiva<br>Veracruz, México · 2026
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="header-area">
+    <h1>Panorama Económico Pax</h1>
+    <p>Centro de operaciones estratégicas y ejecutivas de la microfábrica. 9 secciones, números reales, decisiones accionables.</p>
+  </div>
+
+  <!-- Sección Inicio -->
+  <section id="inicio" class="content-section active">
+    <h2 class="section-title">📚 Explora el Panorama</h2>
+    <p style="max-width:680px;color:var(--text-muted);font-size:1.05rem;margin-bottom:40px;">Cada sección es una página dedicada con los números, supuestos y rutas de acción. Empieza por donde prefieras.</p>
+    <div class="grid">
+      <a class="card" href="#mercado">
+        <span class="tag tag-core">01</span>
+        <div class="card-icon">📊</div>
+        <h3 class="card-title">Mercado y Oportunidad</h3>
+        <p class="card-desc">TAM $504M USD, SAM $60M, SOM $300k/año 1. El vacío que nadie llena: piezas funcionales B2B con verificación técnica y trazabilidad.</p>
+        <div class="card-footer">Abrir Mercado →</div>
       </a>
-      <a class="portal-card" href="variantes.html">
-        <div class="num">02</div>
-        <h3>Las cinco variantes</h3>
-        <p>De bootstrap a hub distribuido. Tabla comparativa, proyecciones mes a mes y ruta de evolución en 18 a 24 meses.</p>
-        <span class="go">Abrir variantes</span>
+
+      <a class="card" href="#variantes">
+        <span class="tag tag-core">02</span>
+        <div class="card-icon">📈</div>
+        <h3 class="card-title">Las Cinco Variantes</h3>
+        <p class="card-desc">De bootstrap $10.9k a hub $750k. Tabla comparativa 12 meses, proyecciones mes a mes y ruta de evolución 18–24 meses.</p>
+        <div class="card-footer">Abrir Variantes →</div>
       </a>
-      <a class="portal-card" href="catalogo.html">
-        <div class="num">03</div>
-        <h3>Catálogo de piezas</h3>
-        <p>12 piezas industriales con material, peso, horas, costo de filamento, precio y margen. El activo central del negocio.</p>
-        <span class="go">Abrir catálogo</span>
+
+      <a class="card" href="#catalogo">
+        <span class="tag tag-core">03</span>
+        <div class="card-icon">📦</div>
+        <h3 class="card-title">Catálogo de Piezas</h3>
+        <p class="card-desc">12 piezas industriales con material, peso, horas, costo filamento, precio y margen. El activo central del negocio.</p>
+        <div class="card-footer">Abrir Catálogo →</div>
       </a>
-      <a class="portal-card" href="agro-pesca.html">
-        <div class="num">04</div>
-        <h3>Agro y acuacultura</h3>
-        <p>20 piezas específicas para el campo y el mar, que encajan con las NOM reguladas y abren apoyos gubernamentales.</p>
-        <span class="go">Abrir agro · pesca</span>
+
+      <a class="card" href="#agro-pesca">
+        <span class="tag tag-core">04</span>
+        <div class="card-icon">🌱</div>
+        <h3 class="card-title">Agro y Acuacultura</h3>
+        <p class="card-desc">20 piezas específicas para campo y mar, que encajan con NOM reguladas y abren apoyos gubernamentales.</p>
+        <div class="card-footer">Abrir Agro · Pesca →</div>
       </a>
-      <a class="portal-card" href="financiamiento.html">
-        <div class="num">05</div>
-        <h3>Financiamiento</h3>
-        <p>Ruta solitaria recomendada (pre-venta + crowdfunding) y, como opciones, socio pasivo o cliente-aliado. Sin socio como requisito.</p>
-        <span class="go">Abrir financiamiento</span>
+
+      <a class="card" href="#financiamiento">
+        <span class="tag tag-core">05</span>
+        <div class="card-icon">💰</div>
+        <h3 class="card-title">Financiamiento</h3>
+        <p class="card-desc">Ruta solitaria recomendada (pre-venta + crowdfunding) y, como opciones, socio pasivo o cliente-aliado. Sin socio como requisito.</p>
+        <div class="card-footer">Abrir Financiamiento →</div>
       </a>
-      <a class="portal-card" href="gobierno.html">
-        <div class="num">06</div>
-        <h3>Apoyos de gobierno</h3>
-        <p>Convocatorias reales de CONAPESCA, SADER y SEDARPA Veracruz verificadas en julio 2026, con plan para 2027.</p>
-        <span class="go">Abrir gobierno</span>
+
+      <a class="card" href="#gobierno">
+        <span class="tag tag-core">06</span>
+        <div class="card-icon">🏛️</div>
+        <h3 class="card-title">Apoyos de Gobierno</h3>
+        <p class="card-desc">Convocatorias reales CONAPESCA, SADER, SEDARPA Veracruz verificadas julio 2026, con plan para 2027.</p>
+        <div class="card-footer">Abrir Gobierno →</div>
       </a>
-      <a class="portal-card" href="proyecciones.html">
-        <div class="num">07</div>
-        <h3>Proyecciones a 10 años</h3>
-        <p>Cuánto se invierte y cuánto se gana al mes en 1, 2, 3, 5 y 10 años, en cuatro escenarios: super pesimista, pesimista, normal y muy bueno.</p>
-        <span class="go">Abrir proyecciones</span>
+
+      <a class="card" href="#proyecciones">
+        <span class="tag tag-core">07</span>
+        <div class="card-icon">📉</div>
+        <h3 class="card-title">Proyecciones 10 Años</h3>
+        <p class="card-desc">Cuánto se invierte y gana al mes en 1, 2, 3, 5 y 10 años. Cuatro escenarios: super pesimista, pesimista, normal, muy bueno.</p>
+        <div class="card-footer">Abrir Proyecciones →</div>
       </a>
-      <a class="portal-card" href="plan.html">
-        <div class="num">08</div>
-        <h3>Plan de acción</h3>
-        <p>Línea de tiempo concreta: qué hacer hoy, esta semana, este mes y hasta abril 2027 para arrancar y escalar.</p>
-        <span class="go">Abrir plan</span>
+
+      <a class="card" href="#plan">
+        <span class="tag tag-core">08</span>
+        <div class="card-icon">🗓️</div>
+        <h3 class="card-title">Plan de Acción</h3>
+        <p class="card-desc">Línea de tiempo concreta: qué hacer hoy, esta semana, este mes y hasta abril 2027 para arrancar y escalar.</p>
+        <div class="card-footer">Abrir Plan →</div>
       </a>
-      <a class="portal-card" href="documentos/EXPEDIENTE-MAESTRO.md" style="background:var(--cream);">
-        <div class="num">—</div>
-        <h3>Expediente maestro</h3>
-        <p>Documento fuente con supuestos, costos de filamento, gastos fijos y el catálogo completo. La verdad está aquí.</p>
-        <span class="go">Abrir .md</span>
+
+      <a class="card" href="#roadmap">
+        <span class="tag tag-core">09</span>
+        <div class="card-icon">🗺️</div>
+        <h3 class="card-title">Roadmap Visual</h3>
+        <p class="card-desc">Cuatro fases 18–24 meses. Diagrama ASCII + detalle por fase: gatillos, métricas y decisiones.</p>
+        <div class="card-footer">Abrir Roadmap →</div>
       </a>
-      <a class="portal-card" href="documentos/README-ACTUALIZACION-v2.md" style="background:var(--cream);">
-        <div class="num">—</div>
-        <h3>Notas del proyecto</h3>
-        <p>Lectura de los documentos Markdown, ubicación de cada archivo y cómo citar los números en cualquier presentación.</p>
-        <span class="go">Abrir notas</span>
+
+      <a class="card" href="#jrycachetes" style="background:var(--accent-gold-soft); border-color:#fde68a;">
+        <span class="tag tag-recommended">Extra</span>
+        <div class="card-icon">🤝</div>
+        <h3 class="card-title">JRyCachetes</h3>
+        <p class="card-desc">Resumen ejecutivo: capital semilla $28k (JR $17k + Cachetes $11k). Variante A operativa en 4 semanas sin tocar capital semilla.</p>
+        <div class="card-footer">Abrir JRyCachetes →</div>
       </a>
     </div>
   </section>
-</div>
 
-<div class="pager">
-  <a href="mercado.html" class="next">
-    <span class="dir">Siguiente</span>
-    <span class="ttl">Mercado y oportunidad →</span>
-  </a>
-</div>
+  <!-- Sección Mercado -->
+  <section id="mercado" class="content-section">
+    <h2 class="section-title">📊 Mercado y Oportunidad</h2>
+    <p class="card-desc" style="max-width:700px;margin-bottom:32px;">México importa la mayoría de sus piezas técnicas funcionales o depende de hobbyists sin verificación. La manufactura aditiva con trazabilidad ética ocupa ese hueco.</p>
 
-<footer class="foot">
-  <div class="foot-inner">
-    <p class="sig">Panorama Económico Pax</p>
-    <p>Microfábrica de Manufactura Aditiva · Veracruz, México · 2026</p>
-  </div>
-</footer>
+    <h3 style="font-size:1.25rem;margin:32px 0 16px;color:var(--accent-navy);">Tamaño del Mercado</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="v">$504M <em>USD</em></div><div class="l">TAM 2025 · Todo el mercado 3D industrial en México</div></div>
+      <div class="stat"><div class="v">$60M <em>USD</em></div><div class="l">SAM · Pieza funcional B2B talleres (12% TAM)</div></div>
+      <div class="stat"><div class="v">$300k <em>USD</em></div><div class="l">SOM Año 1 · Lo que 1–2 impresoras capturan realistamente</div></div>
+      <div class="stat"><div class="v">16.5<em>%</em></div><div class="l">CAGR · Crecimiento anual compuesto hasta 2034</div></div>
+    </div>
+    <p style="color:var(--text-muted);max-width:700px;">El mercado mexicano de impresión 3D industrial pasa de <strong>$504M USD en 2025 a $2,074M en 2034</strong>. El segmento de piezas funcionales B2B para talleres e industria ligera representa un 12% y está fragmentado entre hobbyists, fab labs lentos y bureaus premium caros.</p>
 
-  <script src="assets/nav.js"></script>
+    <h3 style="font-size:1.25rem;margin:40px 0 16px;color:var(--accent-navy);">El Vacío que se Llena</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Competidor existente</th><th>Tipo</th><th>Debilidad que se aprovecha</th></tr></thead>
+        <tbody>
+          <tr><td>Makermex</td><td>Tienda + servicios</td><td>Enfoque hobby, no B2B funcional</td></tr>
+          <tr><td>Fab labs universitarios</td><td>Servicios académicos</td><td>Lentos, sin prioridad comercial, sin verificación</td></tr>
+          <tr><td>Hobbyists en Mercado Libre</td><td>Venta informal</td><td>Sin verificación, materiales variables, sin B2B</td></tr>
+          <tr><td>Bureaus premium (Materialise MX)</td><td>Servicios industriales</td><td>Caros, mínimo de orden alto, no atienden micro-talleres</td></tr>
+          <tr><td>Talleres con impresora propia</td><td>Auto-fabricación</td><td>No son expertos, fallan en selección de material</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--text-muted);max-width:700px;margin-top:16px;">El hueco exacto: <strong>talleres pequeños y medianos que necesitan piezas funcionales</strong>, no pueden pagar un bureau premium, y no quieren arriesgarse con hobbyists sin verificación. Ahí entra la verificación ético-técnica como diferencial que nadie más ofrece.</p>
+
+    <h3 style="font-size:1.25rem;margin:40px 0 16px;color:var(--accent-navy);">El Diferenciador: Verificación Técnica + Trazabilidad</h3>
+    <p style="color:var(--text-muted);max-width:700px;">Cada pieza sale con un <strong>certificado ético-técnico</strong> que documenta el material usado, por qué se eligió, y la trazabilidad del lote. Esto encaja con normas reguladas que los talleres deben cumplir:</p>
+    <ul style="margin:16px 0 0 20px;color:var(--text-muted);line-height:1.8;">
+      <li><strong>NOM-005-SAG/PESC-2015</strong> — trazabilidad pesquera (aplica a piezas para acuacultura)</li>
+      <li><strong>NOM-251-SSA1-2009</strong> — inocuidad alimentaria (piezas en contacto con alimentos)</li>
+      <li><strong>Sanidad agropecuaria</strong> — trazabilidad de herramientas agrícolas</li>
+      <li><strong>Automotriz exportación</strong> — trazabilidad de refacciones</li>
+    </ul>
+    <div class="note">
+      <strong>Por qué el margen bruto es genuinamente alto (85%):</strong> el filamento cuesta entre $36 y $218 por pieza según material, pero el valor funcional de esa pieza para un taller es de $700 a $2,800. La materia prima es barata frente al valor que se entrega. La verificación técnica no tiene costo de materia prima: vale lo que cobra porque es conocimiento aplicado.
+    </div>
+  </section>
+
+  <!-- Sección Variantes -->
+  <section id="variantes" class="content-section">
+    <h2 class="section-title">📈 Las Cinco Variantes</h2>
+    <p class="card-desc" style="max-width:700px;margin-bottom:32px;">Desde $10,900 MXN de bootstrap hasta $750,000 MXN de hub distribuido. Cada variante incluye costo de filamento, sueldo fundador, envío y costos de adquisición. Los números son conservadores.</p>
+
+    <h3 style="font-size:1.25rem;margin:32px 0 16px;color:var(--accent-navy);">Tabla Comparativa — 12 Meses</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Métrica</th><th class="t-center">A · Bootstrap</th><th class="t-center">B · Entrada Pro</th><th class="t-center">C · Microfábrica</th><th class="t-center">D · Célula Dual</th><th class="t-center">E · Hub</th></tr></thead>
+        <tbody>
+          <tr><td>Inversión inicial</td><td class="t-center t-num">$10,900</td><td class="t-center t-num">$55,000</td><td class="t-center t-num">$156,000</td><td class="t-center t-num">$320,000</td><td class="t-center t-num">$750,000</td></tr>
+          <tr><td>Buffer recomendado</td><td class="t-center t-num">$55,500</td><td class="t-center t-num">$67,500</td><td class="t-center t-num">$234,000</td><td class="t-center t-num">$456,000</td><td class="t-center t-num">$1,092,000</td></tr>
+          <tr><td>Capital total seguro</td><td class="t-center t-num">$66,400</td><td class="t-center t-num">$122,500</td><td class="t-center t-num">$390,000</td><td class="t-center t-num">$776,000</td><td class="t-center t-num">$1,842,000</td></tr>
+          <tr><td>Trabajos/mes (Mes 12)</td><td class="t-center t-num">30</td><td class="t-center t-num">70</td><td class="t-center t-num">100</td><td class="t-center t-num">180</td><td class="t-center t-num">475</td></tr>
+          <tr><td>Ingreso Mes 12</td><td class="t-center t-num">$52,500</td><td class="t-center t-num">$122,500</td><td class="t-center t-num">$207,000</td><td class="t-center t-num">$470,000</td><td class="t-center t-num">$1,165,000</td></tr>
+          <tr><td>EBITDA Mes 12</td><td class="t-center t-num">$25,960</td><td class="t-center t-num">$81,240</td><td class="t-center t-num">$141,200</td><td class="t-center t-num">$340,000</td><td class="t-center t-num">$831,000</td></tr>
+          <tr><td>Margen EBITDA</td><td class="t-center">49%</td><td class="t-center">66%</td><td class="t-center">68%</td><td class="t-center">72%</td><td class="t-center">71%</td></tr>
+          <tr><td>Flujo acumulado 12m</td><td class="t-center t-num">$82,766</td><td class="t-center t-num">$501,956</td><td class="t-center t-num">$819,986</td><td class="t-center t-num">$2,073,600</td><td class="t-center t-num">$4,877,400</td></tr>
+          <tr><td>Punto de equilibrio</td><td class="t-center">Mes 5</td><td class="t-center">Mes 2</td><td class="t-center">Mes 2</td><td class="t-center">Mes 2</td><td class="t-center">Mes 2</td></tr>
+          <tr><td>Recuperación CAPEX</td><td class="t-center">Mes 9</td><td class="t-center">Mes 6</td><td class="t-center">Mes 7</td><td class="t-center">Mes 6</td><td class="t-center">Mes 6</td></tr>
+          <tr><td>ROI anual acumulado</td><td class="t-center">~660%</td><td class="t-center">~810%</td><td class="t-center">~430%</td><td class="t-center">~550%</td><td class="t-center">~550%</td></tr>
+          <tr><td>Sueldo fundador/mes</td><td class="t-center t-num">$15,000</td><td class="t-center t-num">$15,000</td><td class="t-center t-num">$20,000</td><td class="t-center t-num">$25,000</td><td class="t-center t-num">$30,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><strong>El precio promedio por trabajo es $1,750 MXN</strong> (no $2,800). El costo variable por pieza es $268 (filamento + electricidad + empaque + envío parcial). El margen bruto es 85%; el EBITDA baja a 49–72% tras restar gastos fijos completos, incluido el sueldo del fundador desde el Mes 1.</div>
+
+    <h3 style="font-size:1.25rem;margin:40px 0 16px;color:var(--accent-navy);">Las Cinco Variantes en Detalle</h3>
+    <div class="variant-grid">
+      <div class="variant v-a"><span class="tag">Variante A</span><h3>Bootstrap</h3><p class="sub">Validar concepto con 1 impresora de entrada</p><div class="row"><span class="k">Inversión</span><span class="val">$10,900</span></div><div class="row"><span class="k">EBITDA Mes 12</span><span class="val">$25,960</span></div><div class="row"><span class="k">Flujo 12 meses</span><span class="val">$82,766</span></div><div class="row"><span class="k">Equilibrio</span><span class="val">Mes 5</span></div><div class="row"><span class="k">Recup. CAPEX</span><span class="val">Mes 9</span></div><div class="row"><span class="k">ROI anual</span><span class="val">~660%</span></div><div class="row"><span class="k">Equipo</span><span class="val">Ender 3 S1 Pro</span></div></div>
+
+      <div class="variant v-b"><span class="tag">Variante B</span><h3>Entrada Pro</h3><p class="sub">Producción profesional con 2 impresoras</p><div class="row"><span class="k">Inversión</span><span class="val">$55,000</span></div><div class="row"><span class="k">EBITDA Mes 12</span><span class="val">$81,240</span></div><div class="row"><span class="k">Flujo 12 meses</span><span class="val">$501,956</span></div><div class="row"><span class="k">Equilibrio</span><span class="val">Mes 2</span></div><div class="row"><span class="k">Recup. CAPEX</span><span class="val">Mes 6</span></div><div class="row"><span class="k">ROI anual</span><span class="val">~810%</span></div><div class="row"><span class="k">Equipo</span><span class="val">Bambu Lab X1C + A1</span></div></div>
+
+      <div class="variant v-c"><span class="tag">Variante C</span><h3>Microfábrica</h3><p class="sub">Operación completa con 4 impresoras + acabado</p><div class="row"><span class="k">Inversión</span><span class="val">$156,000</span></div><div class="row"><span class="k">EBITDA Mes 12</span><span class="val">$141,200</span></div><div class="row"><span class="k">Flujo 12 meses</span><span class="val">$819,986</span></div><div class="row"><span class="k">Equilibrio</span><span class="val">Mes 2</span></div><div class="row"><span class="k">Recup. CAPEX</span><span class="val">Mes 7</span></div><div class="row"><span class="k">ROI anual</span><span class="val">~430%</span></div><div class="row"><span class="k">Equipo</span><span class="val">4× Bambu + post-proc</span></div></div>
+
+      <div class="variant v-d"><span class="tag">Variante D</span><h3>Célula Dual</h3><p class="sub">Dos microfábricas operando en paralelo</p><div class="row"><span class="k">Inversión</span><span class="val">$320,000</span></div><div class="row"><span class="k">EBITDA Mes 12</span><span class="val">$340,000</span></div><div class="row"><span class="k">Flujo 12 meses</span><span class="val">$2,073,600</span></div><div class="row"><span class="k">Equilibrio</span><span class="val">Mes 2</span></div><div class="row"><span class="k">Recup. CAPEX</span><span class="val">Mes 6</span></div><div class="row"><span class="k">ROI anual</span><span class="val">~550%</span></div><div class="row"><span class="k">Equipo</span><span class="val">8× Bambu + automatización</span></div></div>
+
+      <div class="variant v-e"><span class="tag">Variante E</span><h3>Hub Distribuido</h3><p class="sub">Red de 4 células + logística central</p><div class="row"><span class="k">Inversión</span><span class="val">$750,000</span></div><div class="row"><span class="k">EBITDA Mes 12</span><span class="val">$831,000</span></div><div class="row"><span class="k">Flujo 12 meses</span><span class="val">$4,877,400</span></div><div class="row"><span class="k">Equilibrio</span><span class="val">Mes 2</span></div><div class="row"><span class="k">Recup. CAPEX</span><span class="val">Mes 6</span></div><div class="row"><span class="k">ROI anual</span><span class="val">~550%</span></div><div class="row"><span class="k">Equipo</span><span class="val">16× Bambu + flota</span></div></div>
+    </div>
+  </section>
+
+  <!-- Sección Catálogo -->
+  <section id="catalogo" class="content-section">
+    <h2 class="section-title">📦 Catálogo de Piezas</h2>
+    <p class="card-desc" style="max-width:700px;margin-bottom:32px;">12 piezas industriales con material, peso, horas, costo de filamento, precio y margen. El activo central del negocio.</p>
+    <div class="cat-grid">
+      <div class="cat-card"><div class="cat-head"><div><div class="cat-num">01</div><div class="cat-name">Junta brida 4"</div></div><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h4"/><circle cx="12" cy="19" r="1"/></svg></div><div class="cat-app">Sello estanco para tubería de proceso en planta química.</div><div class="cat-mat">PETG</div><div class="cat-specs"><div class="cat-spec"><div class="v">60g</div><div class="l">Peso</div></div><div class="cat-spec"><div class="v">2.0h</div><div class="l">Horas</div></div><div class="cat-spec"><div class="v">$161</div><div class="l">Costo var.</div></div></div><div class="cat-price"><span class="p">$900</span><span class="m">Margen $739 · 82%</span></div></div>
+
+      <div class="cat-card"><div class="cat-head"><div><div class="cat-num">02</div><div class="cat-name">Soporte sensor</div></div><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4h12v16H6z"/><path d="M9 8h6M9 12h6M9 16h4"/><circle cx="12" cy="19" r="1"/></svg></div><div class="cat-app">Montaje de sensor de presión o temperatura en ambiente industrial.</div><div class="cat-mat">ASA</div><div class="cat-specs"><div class="cat-spec"><div class="v">80g</div><div class="l">Peso</div></div><div class="cat-spec"><div class="v">3.0h</div><div class="l">Horas</div></div><div class="cat-spec"><div class="v">$212</div><div class="l">Costo var.</div></div></div><div class="cat-price"><span class="p">$1,200</span><span class="m">Margen $988 · 82%</span></div></div>
+
+      <div class="cat-card"><div class="cat-head"><div><div class="cat-num">03</div><div class="cat-name">Guía lineal 3D</div></div><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h16M4 16h16M8 4v16"/></svg></div><div class="cat-app">Sustituto de guía metálica en impresoras y CNC ligeras.</div><div class="cat-mat">Nylon</div><div class="cat-specs"><div class="cat-spec"><div class="v">120g</div><div class="l">Peso</div></div><div class="cat-spec"><div class="v">4.5h</div><div class="l">Horas</div></div><div class="cat-spec"><div class="v">$318</div><div class="l">Costo var.</div></div></div><div class="cat-price"><span class="p">$1,800</span><span class="m">Margen $1,482 · 82%</span></div></div>
+
+      <div class="cat-card"><div class="cat-head"><div><div class="cat-num">04</div><div class="cat-name">Porta-boquilla</div></div><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 4v6M12 14v6M8 12h8"/></svg></div><div class="cat-app">Soporte de boquilla de corte por plasma para taller naval.</div><div class="cat-mat">PETG</div><div class="cat-specs"><div class="cat-spec"><div class="v">45g</div><div class="l">Peso</div></div><div class="cat-spec"><div class="v">1.5h</div><div class="l">Horas</div></div><div class="cat-spec"><div class="v">$121</div><div class="l">Costo var.</div></div></div><div class="cat-price"><span class="p">$700</span><span class="m">Margen $579 · 83%</span></div></div>
+
+      <div class="cat-card"><div class="cat-head"><div><div class="cat-num">05</div><div class="cat-name">Adaptador manguera</div></div><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 10c0-3 4-5 6-5s6 2 6 5"/><path d="M6 14c0 3 4 5 6 5s6-2 6-5"/></svg></div><div class="cat-app">Conexión rápida entre manguera 1/2" y equipo de riego tecnificado.</div><div class="cat-mat">PETG</div><div class="cat-specs"><div class="cat-spec"><div class="v">30g</div><div class="l">Peso</div></div><div class="cat-spec"><div class="v">1.0h</div><div class="l">Horas</div></div><div class="cat-spec"><div class="v">$81</div><div class="l">Costo var.</div></div></div><div class="cat-price"><span class="p">$500</span><span class="m">Margen $419 · 84%</span></div></div>
+
+      <div class="cat-card"><div class="cat-head"><div><div class="cat-num">06</div><div class="cat-name">Caja estanqueidad</div></div><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12h8M12 8v8"/></svg></div><div class="cat-app">Gabinete IP65 para electrónica de control en ambiente húmedo.</div><div class="cat-mat">ASA</div><div class="cat-specs"><div class="cat-spec"><div class="v">200g</div><div class="l">Peso</div></div><div class="cat-spec"><div class="v">7.0h</div><div class="l">Horas</div></div><div class="cat-spec"><div class="v">$530</div><div class="l">Costo var.</div></div></div><div class="cat-price"><span class="p">$2,800</span><span class="m">Margen $2,270 · 81%</span></div></div>
+
+      <div class="cat-card"><div class="cat-head"><div><div class="cat-num">07</div><div class="cat-name">Jig taladro</div></div><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4v16M4 12h16"/><circle cx="12" cy="12" r="6"/></svg></div><div class="cat-app">Plantilla para taladrar patrón de 8 agujeros en brida estándar.</div><div class="cat-mat">PLA</div><div class="cat-specs"><div class="cat-spec"><div class="v">40g</div><div class="l">Peso</div></div><div class="cat-spec"><div class="v">1.2h</div><div class="l">Horas</div></div><div class="cat-spec"><div class="v">$107</div><div class="l">Costo var.</div></div></div><div class="cat-price"><span class="p">$600</span><span class="m">Margen $493 · 82%</span></div></div>
+
+      <div class="cat-card"><div class="cat-head"><div><div class="cat-num">08</div><div class="cat-name">Separador térmico</div></div><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="8" width="18" height="8" rx="1"/><path d="M7 8v-2M17 8v-2"/></svg></div><div class="cat-app">Aislamiento entre bloque caliente y estructura en extrusora.</div><div class="cat-mat">PEI</div><div class="cat-specs"><div class="cat-spec"><div class="v">25g</div><div class="l">Peso</div></div><div class="cat-spec"><div class="v">0.8h</div><div class="l">Horas</div></div><div class="cat-spec"><div class="v">$189</div><div class="l">Costo var.</div></div></div><div class="cat-price"><span class="p">$1,000</span><span class="m">Margen $811 · 81%</span></div></div>
+
+      <div class="cat-card"><div class="cat-head"><div><div class="cat-num">09</div><div class="cat-name">Porta-filtro</div></div><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 4v6M12 14v6M8 12h8"/></svg></div><div class="cat-app">Soporte de filtro de aire para compresor de taller.</div><div class="cat-mat">PETG</div><div class="cat-specs"><div class="cat-spec"><div class="v">55g</div><div class="l">Peso</div></div><div class="cat-spec"><div class="v">2.0h</div><div class="l">Horas</div></div><div class="cat-spec"><div class="v">$147</div><div class="l">Costo var.</div></div></div><div class="cat-price"><span class="p">$800</span><span class="m">Margen $653 · 82%</span></div></div>
+
+      <div class="cat-card"><div class="cat-head"><div><div class="cat-num">10</div><div class="cat-name">Engranaje mod 1.5</div></div><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 4v6M12 14v6M4 12h6M14 12h6"/></svg></div><div class="cat-app">Transmisión de par en actuador lineal de banco de pruebas.</div><div class="cat-mat">Nylon</div><div class="cat-specs"><div class="cat-spec"><div class="v">65g</div><div class="l">Peso</div></div><div class="cat-spec"><div class="v">2.5h</div><div class="l">Horas</div></div><div class="cat-spec"><div class="v">$173</div><div class="l">Costo var.</div></div></div><div class="cat-price"><span class="p">$950</span><span class="m">Margen $777 · 82%</span></div></div>
+
+      <div class="cat-card"><div class="cat-head"><div><div class="cat-num">11</div><div class="cat-name">Carcasa sensor</div></div><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="6" width="14" height="12" rx="2"/><path d="M12 10h.01"/></svg></div><div class="cat-app">Protección IP67 para sensor de vibración en motor industrial.</div><div class="cat-mat">ASA</div><div class="cat-specs"><div class="cat-spec"><div class="v">70g</div><div class="l">Peso</div></div><div class="cat-spec"><div class="v">2.2h</div><div class="l">Horas</div></div><div class="cat-spec"><div class="v">$185</div><div class="l">Costo var.</div></div></div><div class="cat-price"><span class="p">$1,100</span><span class="m">Margen $915 · 83%</span></div></div>
+
+      <div class="cat-card"><div class="cat-head"><div><div class="cat-num">12</div><div class="cat-name">Letrero QR</div></div><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16"/><path d="M8 8h2v2H8zM11 8h2v2h-2zM14 8h2v2h-2z"/></svg></div><div class="cat-app">Placa con código QR para trazabilidad de lote en pieza entregada.</div><div class="cat-mat">PLA</div><div class="cat-specs"><div class="cat-spec"><div class="v">15g</div><div class="l">Peso</div></div><div class="cat-spec"><div class="v">0.5h</div><div class="l">Horas</div></div><div class="cat-spec"><div class="v">$40</div><div class="l">Costo var.</div></div></div><div class="cat-price"><span class="p">$300</span><span class="m">Margen $260 · 87%</span></div></div>
+    </div>
+  </section>
+
+  <!-- Sección Agro-Pesca -->
+  <section id="agro-pesca" class="content-section">
+    <h2 class="section-title">🌱 Agro y Acuacultura</h2>
+    <p class="card-desc" style="max-width:700px;margin-bottom:32px;">20 piezas específicas para el campo y el mar, que encajan con las NOM reguladas y abren apoyos gubernamentales.</p>
+
+    <h3 style="font-size:1.25rem;margin:32px 0 16px;color:var(--accent-navy);">Normas que habilitan el mercado</h3>
+    <ul style="margin:16px 0 0 20px;color:var(--text-muted);line-height:1.8;">
+      <li><strong>NOM-005-SAG/PESC-2015</strong> — trazabilidad pesquera (piezas para acuacultura)</li>
+      <li><strong>NOM-251-SSA1-2009</strong> — inocuidad alimentaria (piezas en contacto con alimentos)</li>
+      <li><strong>Sanidad agropecuaria</strong> — trazabilidad de herramientas agrícolas</li>
+      <li><strong>NOM-051-SCFI-2011</strong> — etiquetado (letreros QR para lote)</li>
+    </ul>
+
+    <h3 style="font-size:1.25rem;margin:40px 0 16px;color:var(--accent-navy);">Catálogo 20 Piezas (Resumen)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Pieza</th><th>Material</th><th class="t-right">Peso</th><th class="t-right">Horas</th><th class="t-right">Costo var.</th><th class="t-right">Precio</th><th>NOM aplicable</th></tr></thead>
+        <tbody>
+          <tr><td>13</td><td>Anillo sello estanque</td><td>PETG</td><td class="t-right t-num">50g</td><td class="t-right t-num">1.5h</td><td class="t-right t-num">$134</td><td class="t-right t-num">$750</td><td>NOM-005</td></tr>
+          <tr><td>14</td><td>Difusor oxígeno</td><td>PLA</td><td class="t-right t-num">35g</td><td class="t-right t-num">1.0h</td><td class="t-right t-num">$94</td><td class="t-right t-num">$600</td><td>NOM-005</td></tr>
+          <tr><td>15</td><td>Soporte malla sombra</td><td>ASA</td><td class="t-right t-num">80g</td><td class="t-right t-num">2.5h</td><td class="t-right t-num">$212</td><td class="t-right t-num">$1,200</td><td>NOM-251</td></tr>
+          <tr><td>16</td><td>Caja control riego</td><td>ASA</td><td class="t-right t-num">180g</td><td class="t-right t-num">6.0h</td><td class="t-right t-num">$477</td><td class="t-right t-num">$2,500</td><td>NOM-251</td></tr>
+          <tr><td>17</td><td>Boquilla goteo</td><td>PETG</td><td class="t-right t-num">12g</td><td class="t-right t-num">0.4h</td><td class="t-right t-num">$32</td><td class="t-right t-num">$200</td><td>NOM-251</td></tr>
+          <tr><td>18</td><td>Válvula flotador</td><td>PETG</td><td class="t-right t-num">45g</td><td class="t-right t-num">1.5h</td><td class="t-right t-num">$121</td><td class="t-right t-num">$700</td><td>NOM-005</td></tr>
+          <tr><td>19</td><td>Etiqueta QR ganado</td><td>PLA</td><td class="t-right t-num">8g</td><td class="t-right t-num">0.3h</td><td class="t-right t-num">$21</td><td class="t-right t-num">$150</td><td>NOM-051</td></tr>
+          <tr><td>20</td><td>Porta-sensor pH</td><td>ASA</td><td class="t-right t-num">60g</td><td class="t-right t-num">2.0h</td><td class="t-right t-num">$161</td><td class="t-right t-num">$900</td><td>NOM-251</td></tr>
+          <tr><td>21</td><td>Filtro sedimento</td><td>PETG</td><td class="t-right t-num">90g</td><td class="t-right t-num">3.0h</td><td class="t-right t-num">$241</td><td class="t-right t-num">$1,300</td><td>NOM-251</td></tr>
+          <tr><td>22</td><td>Conexión goteo</td><td>PETG</td><td class="t-right t-num">15g</td><td class="t-right t-num">0.5h</td><td class="t-right t-num">$40</td><td class="t-right t-num">$250</td><td>NOM-251</td></tr>
+          <tr><td>23</td><td>Tapón tanque</td><td>ASA</td><td class="t-right t-num">35g</td><td class="t-right t-num">1.0h</td><td class="t-right t-num">$94</td><td class="t-right t-num">$550</td><td>NOM-251</td></tr>
+          <tr><td>24</td><td>Soporte panel solar</td><td>ASA</td><td class="t-right t-num">150g</td><td class="t-right t-num">5.0h</td><td class="t-right t-num">$397</td><td class="t-right t-num">$2,200</td><td>NOM-251</td></tr>
+          <tr><td>25</td><td>Guía siembra</td><td>PLA</td><td class="t-right t-num">25g</td><td class="t-right t-num">0.8h</td><td class="t-right t-num">$67</td><td class="t-right t-num">$400</td><td>NOM-251</td></tr>
+          <tr><td>26</td><td>Caja medidor</td><td>ASA</td><td class="t-right t-num">120g</td><td class="t-right t-num">4.0h</td><td class="t-right t-num">$318</td><td class="t-right t-num">$1,800</td><td>NOM-005</td></tr>
+          <tr><td>27</td><td>Adaptador manguera</td><td>PETG</td><td class="t-right t-num">18g</td><td class="t-right t-num">0.6h</td><td class="t-right t-num">$48</td><td class="t-right t-num">$300</td><td>NOM-251</td></tr>
+          <tr><td>28</td><td>Red protection</td><td>Nylon</td><td class="t-right t-num">200g</td><td class="t-right t-num">8.0h</td><td class="t-right t-num">$530</td><td class="t-right t-num">$3,000</td><td>NOM-005</td></tr>
+          <tr><td>29</td><td>Flotador nivel</td><td>PETG</td><td class="t-right t-num">40g</td><td class="t-right t-num">1.2h</td><td class="t-right t-num">$107</td><td class="t-right t-num">$650</td><td>NOM-005</td></tr>
+          <tr><td>30</td><td>Soporte cámara</td><td>ASA</td><td class="t-right t-num">100g</td><td class="t-right t-num">3.5h</td><td class="t-right t-num">$265</td><td class="t-right t-num">$1,500</td><td>NOM-251</td></tr>
+          <tr><td>31</td><td>Valvula alivio</td><td>PETG</td><td class="t-right t-num">55g</td><td class="t-right t-num">1.8h</td><td class="t-right t-num">$147</td><td class="t-right t-num">$800</td><td>NOM-005</td></tr>
+          <tr><td>32</td><td>Letrero QR lote</td><td>PLA</td><td class="t-right t-num">12g</td><td class="t-right t-num">0.4h</td><td class="t-right t-num">$32</td><td class="t-right t-num">$200</td><td>NOM-051</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><strong>Total piezas agro-pesca: 20</strong> · Precio promedio $980 · Margen bruto promedio 82% · Costo variable total ~$3,200 por set completo</div>
+  </section>
+
+  <!-- Sección Financiamiento -->
+  <section id="financiamiento" class="content-section">
+    <h2 class="section-title">💰 Financiamiento</h2>
+    <p class="card-desc" style="max-width:700px;margin-bottom:32px;">La ruta recomendada es solitaria: pre-venta + crowdfunding + reinversión. Si en algún momento quieres acelerar, un socio pasivo es una opción, no una necesidad. Y un cliente grande puede convertirse en aliado sin ceder equity.</p>
+
+    <h3 style="font-size:1.25rem;margin:32px 0 16px;color:var(--accent-navy);">Tres Rutas de Financiamiento</h3>
+    <div class="finc-grid">
+      <div class="finc-card primary">
+        <span class="badge-rec">Recomendada</span>
+        <div class="tag">Ruta 1 · Solitaria</div>
+        <h3>Solo, sin socios, sin deuda</h3>
+        <p class="sub">Pre-venta + crowdfunding + reinversión de ganancias. Mantienes 100% del negocio.</p>
+        <div class="row"><span class="k">Capital necesario</span><span class="val">$0 propio</span></div>
+        <div class="row"><span class="k">Equity cedido</span><span class="val">0%</span></div>
+        <div class="row"><span class="k">Tiempo a Variante A</span><span class="val">4 semanas</span></div>
+        <div class="row"><span class="k">Tiempo a Variante B</span><span class="val">3 meses</span></div>
+        <div class="row"><span class="k">Riesgo</span><span class="val">Cero deuda</span></div>
+        <div class="row"><span class="k">Control del negocio</span><span class="val">100%</span></div>
+      </div>
+
+      <div class="finc-card">
+        <div class="tag">Ruta 2 · Con socio pasivo (opcional)</div>
+        <h3>Socio que aporta liquidez</h3>
+        <p class="sub">Si quieres acelerar a Variante B sin gastar tu propio capital. El socio no opera, solo observa.</p>
+        <div class="row"><span class="k">Capital del socio</span><span class="val">$95,000 MXN</span></div>
+        <div class="row"><span class="k">Equity cedido</span><span class="val">35%</span></div>
+        <div class="row"><span class="k">ROI para el socio</span><span class="val">185% anual</span></div>
+        <div class="row"><span class="k">Recuperación socio</span><span class="val">Mes 7–8</span></div>
+        <div class="row"><span class="k">Control operativo</span><span class="val">100% tuyo</span></div>
+        <div class="row"><span class="k">Riesgo</span><span class="val">Cero deuda</span></div>
+      </div>
+
+      <div class="finc-card">
+        <div class="tag">Ruta 3 · Cliente-aliado (opcional)</div>
+        <h3>Cliente que compra y apoya</h3>
+        <p class="sub">Un cliente grande (taller, cooperativa) que necesita piezas y te pre-paga lotes. No cedes equity, solo entregas a precio de costo.</p>
+        <div class="row"><span class="k">Capital del cliente</span><span class="val">$10k–$50k pre-pago</span></div>
+        <div class="row"><span class="k">Equity cedido</span><span class="val">0%</span></div>
+        <div class="row"><span class="k">A cambio</span><span class="val">Piezas a costo + prioridad</span></div>
+        <div class="row"><span class="k">Control del negocio</span><span class="val">100%</span></div>
+        <div class="row"><span class="k">Riesgo</span><span class="val">Cero deuda</span></div>
+        <div class="row"><span class="k">Beneficio extra</span><span class="val">Cliente fidelizado</span></div>
+      </div>
+    </div>
+    <div class="note"><strong>La ruta solitaria es la recomendada.</strong> El socio y el cliente-aliado son opciones para acelerar si lo necesitas, no requisitos para arrancar. La mayoría de los negocios rentables empiezan solos y solo buscan socios cuando ya tienen tracción demostrada.</div>
+  </section>
+
+  <!-- Sección Gobierno -->
+  <section id="gobierno" class="content-section">
+    <h2 class="section-title">🏛️ Apoyos de Gobierno</h2>
+    <p class="card-desc" style="max-width:700px;margin-bottom:32px;">El gobierno es acelerador, no arranque. La única convocatoria abierta hoy es Promotor Extensionista de SEDARPA. Las demás cerraron en 2026 y abren de nuevo en 2027: hay que tener propuestas listas antes.</p>
+
+    <h3 style="font-size:1.25rem;margin:32px 0 16px;color:var(--accent-navy);">Estado de Convocatorias — Julio 2026</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Convocatoria</th><th>Nivel</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td>Premio Pesca y Acuacultura Sustentables 2026</td><td>Federal · CONAPESCA</td><td><span class="pill-status pill-closed">Cerrada (24 abr 2026)</span></td></tr>
+          <tr><td>Producción para el Bienestar 2026 Veracruz</td><td>Federal-estatal · SADER</td><td><span class="pill-status pill-closed">Cerrada (20 mar 2026)</span></td></tr>
+          <tr><td>ECAS Veracruz 2026</td><td>Estatal · SEDARPA</td><td><span class="pill-status pill-closed">Cerrada (23 abr 2026)</span></td></tr>
+          <tr><td>SEDARPA 27–28 may 2026</td><td>Estatal · SEDARPA</td><td><span class="pill-status pill-closed">Cerrada (28 may 2026)</span></td></tr>
+          <tr><td>Equipamiento y Maquinaria Agrícola 2026</td><td>Estatal · SEDARPA</td><td><span class="pill-status pill-maybe">Sin fecha de cierre confirmada</span></td></tr>
+          <tr><td>Granos Básicos Soberanía Alimentaria</td><td>Estatal · SEDARPA</td><td><span class="pill-status pill-maybe">Vigente, sin fecha de cierre</span></td></tr>
+          <tr><td><strong>Promotor Extensionista / Desarrollo Rural</strong></td><td>Estatal · SEDARPA</td><td><span class="pill-status pill-open">Registro permanente</span></td></tr>
+          <tr><td>Inseminación Artificial Veracruz</td><td>Estatal · SEDARPA</td><td><span class="pill-status pill-maybe">Anunciado abr, sin confirmar</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:1.25rem;margin:40px 0 16px;color:var(--accent-navy);">La Única Acción Posible Ahora</h3>
+    <div class="dec-grid">
+      <div class="dec featured">
+        <span class="pill">Abierta hoy</span>
+        <h4>Promotor Extensionista SEDARPA</h4>
+        <p style="color:var(--text-muted);font-size:0.92rem;margin-bottom:18px;">Registro permanente. Busca "agentes de cambio" en los 212 municipios de Veracruz, con prioridad en 127 con rezago social.</p>
+        <div class="row"><span class="k">Estatus</span><span class="val"><span class="pill-status pill-open">Abierto</span></span></div>
+        <div class="row"><span class="k">Registro</span><span class="val">veracruz.gob.mx/agropecuario/convocatoria-2</span></div>
+        <div class="row"><span class="k">Oficina</span><span class="val">SEDARPA Xalapa</span></div>
+        <div class="row"><span class="k">Dirección</span><span class="val">Av. Salvador Díaz Mirón 33</span></div>
+        <div class="row"><span class="k">Beneficio</span><span class="val">Credibilidad + red + posible pago</span></div>
+      </div>
+      <div class="dec">
+        <h4>Preparar para 2027</h4>
+        <p style="color:var(--text-muted);font-size:0.92rem;margin-bottom:18px;">Las convocatorias con fecha de 2026 cerraron, pero abren de nuevo en 2027 en fechas similares. Las ventanas de registro duran 3–30 días: hay que tener todo listo antes.</p>
+        <div class="row"><span class="k">Premio CONAPESCA 2027</span><span class="val">~mar–abr 2027</span></div>
+        <div class="row"><span class="k">Producción Bienestar 2027</span><span class="val">~feb–mar 2027</span></div>
+        <div class="row"><span class="k">ECAS Veracruz 2027</span><span class="val">~abr 2027</span></div>
+        <div class="row"><span class="k">Monto esperado</span><span class="val">~$89,000 MXN realista</span></div>
+        <div class="row"><span class="k">Escenario optimista</span><span class="val">$200,000+ MXN</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Proyecciones -->
+  <section id="proyecciones" class="content-section">
+    <h2 class="section-title">📉 Proyecciones 10 Años</h2>
+    <p class="card-desc" style="max-width:700px;margin-bottom:32px;">Arranque con Variante B ($122,500 MXN incluyendo buffer) y escala por reinversión. Cuatro escenarios honestos: super pesimista, pesimista, normal y muy bueno, proyectados a 1, 2, 3, 5 y 10 años.</p>
+
+    <h3 style="font-size:1.25rem;margin:32px 0 16px;color:var(--accent-navy);">Inversión Total por Escenario</h3>
+    <p style="color:var(--text-muted);max-width:700px;margin-bottom:24px;">Cuánto dinero entra al negocio acumulado en cada horizonte (CAPEX inicial + reinversiones para escalar). En escenarios pesimistas no se escala, así que la inversión se queda en el arranque.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Horizonte</th><th class="t-right">Super pesimista</th><th class="t-right">Pesimista</th><th class="t-right">Normal</th><th class="t-right">Muy bueno</th></tr></thead>
+        <tbody>
+          <tr><td>Inversión inicial (año 0)</td><td class="t-right t-num">$122,500</td><td class="t-right t-num">$122,500</td><td class="t-right t-num">$122,500</td><td class="t-right t-num">$122,500</td></tr>
+          <tr><td>+ Reinversión año 1–2</td><td class="t-right t-num">$0</td><td class="t-right t-num">$0</td><td class="t-right t-num">$156,000</td><td class="t-right t-num">$156,000</td></tr>
+          <tr><td>+ Reinversión año 3–5</td><td class="t-right t-num">$0</td><td class="t-right t-num">$156,000</td><td class="t-right t-num">$320,000</td><td class="t-right t-num">$320,000</td></tr>
+          <tr><td>+ Reinversión año 6–10</td><td class="t-right t-num">$0</td><td class="t-right t-num">$0</td><td class="t-right t-num">$750,000</td><td class="t-right t-num">$750,000</td></tr>
+          <tr class="t-total"><td>Inversión acumulada a 10 años</td><td class="t-right t-num">$122,500</td><td class="t-right t-num">$278,500</td><td class="t-right t-num">$1,348,500</td><td class="t-right t-num">$1,348,500</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><strong>De dónde sale la reinversión:</strong> en los escenarios normal y muy bueno, las ganancias del negocio financian el escalamiento a las siguientes variantes (C, D, E). No se pide más capital externo: se reinvierte flujo propio. En los escenarios pesimistas no hay suficiente flujo, así que no se escala.</div>
+
+    <h3 style="font-size:1.25rem;margin:40px 0 16px;color:var(--accent-navy);">EBITDA Mensual por Año y Escenario</h3>
+    <p style="color:var(--text-muted);max-width:700px;margin-bottom:24px;">Cuánto deja el negocio cada mes al final de cada año, en cada escenario. Es el ingreso después de todos los costos (filamento, sueldo, gastos fijos, envío, marketing).</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Año</th><th class="t-right">Super pesimista</th><th class="t-right">Pesimista</th><th class="t-right">Normal</th><th class="t-right">Muy bueno</th></tr></thead>
+        <tbody>
+          <tr><td>Año 1 (mes 12)</td><td class="t-right t-num">$14,500</td><td class="t-right t-num">$61,000</td><td class="t-right t-num">$81,240</td><td class="t-right t-num">$101,000</td></tr>
+          <tr><td>Año 2 (mes 24)</td><td class="t-right t-num">$18,000</td><td class="t-right t-num">$72,000</td><td class="t-right t-num">$141,200</td><td class="t-right t-num">$176,000</td></tr>
+          <tr><td>Año 3 (mes 36)</td><td class="t-right t-num">$18,000</td><td class="t-right t-num">$105,000</td><td class="t-right t-num">$220,000</td><td class="t-right t-num">$320,000</td></tr>
+          <tr><td>Año 5 (mes 60)</td><td class="t-right t-num">$15,000</td><td class="t-right t-num">$210,000</td><td class="t-right t-num">$400,000</td><td class="t-right t-num">$650,000</td></tr>
+          <tr><td>Año 10 (mes 120)</td><td class="t-right t-num">$8,000</td><td class="t-right t-num">$280,000</td><td class="t-right t-num">$831,000</td><td class="t-right t-num">$1,500,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note warn"><strong>El escenario super pesimista a 10 años es duro:</strong> sin reinversión, el equipo envejece, la competencia sube, y el EBITDA mensual baja de $14,500 a $8,000. Esto refleja la realidad de un negocio que no escala: se estanca y decae. No es un negocio sostenible a 10 años sin reinvertir.</div>
+  </section>
+
+  <!-- Sección Plan -->
+  <section id="plan" class="content-section">
+    <h2 class="section-title">🗓️ Plan de Acción</h2>
+    <p class="card-desc" style="max-width:700px;margin-bottom:32px;">Una línea de tiempo concreta, de hoy a abril 2027. Arrancar con socio o pre-venta, registrarse como Promotor Extensionista, conseguir cartas de cooperativas, y tener tres propuestas listas antes de que abran las convocatorias de 2027.</p>
+
+    <h3 style="font-size:1.25rem;margin:32px 0 16px;color:var(--accent-navy);">Línea de Tiempo</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-when">Hoy</div>
+        <div class="tl-title">Lee el expediente + valida el precio</div>
+        <div class="tl-body">Lee el EXPEDIENTE-MAESTRO.md (catálogo de 12 piezas y supuestos). Visita 5 talleres de Veracruz y valida el precio promedio de $1,750. Si sale entre $1,200 y $2,200, los números se sostienen.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Esta semana</div>
+        <div class="tl-title">Regístrate como Promotor Extensionista SEDARPA</div>
+        <div class="tl-body">Entra a veracruz.gob.mx/agropecuario/convocatoria-2. Descarga el formato de registro. Llénalo con el perfil "Promotor Extensionista en Tecnología 3D para el Medio Rural". Envuélvelo en SEDARPA Xalapa (Av. Salvador Díaz Mirón 33).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Próxima semana</div>
+        <div class="tl-title">Confirma estatus de convocatorias + busca socio</div>
+        <div class="tl-body">Llama o visita SEDARPA Xalapa: (1) estatus de Equipamiento Agrícola, (2) nuevas convocatorias segunda mitad 2026, (3) gaceta oficial reciente. En paralelo, contacta a 20 personas con posible liquidez para el socio pasivo.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Mes 1–3</div>
+        <div class="tl-title">Arranca Variante A o B + consigue cartas</div>
+        <div class="tl-body">Arranca con socio o pre-venta, sin esperar al gobierno. Contacta 5 cooperativas pesqueras de la costa de Veracruz (Puerto Veracruz, Alvarado, Tuxpan, Poza Rica, Laguna de Tamiahua) para conseguir cartas de respaldo para 2027. Como Promotor Extensionista, da talleres de "tecnología 3D para el campo" en municipios con rezago.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Mes 4–6</div>
+        <div class="tl-title">Arma tres propuestas para 2027</div>
+        <div class="tl-body">Tres propuestas listas: Premio CONAPESCA, Producción para el Bienestar, ECAS Veracruz. Cada una con presupuesto detallado, cronograma y métricas de impacto. Las ventanas de 2027 durarán de 3 a 30 días: hay que tener TODO listo antes de que abran.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Feb–abr 2027</div>
+        <div class="tl-title">Presenta las propuestas en las primeras 48h</div>
+        <div class="tl-body">Cuando abran las convocatorias de 2027, presenta las tres propuestas en las primeras 48 horas. Con cartas de respaldo + números conservadores + tracción real, la probabilidad de bajar al menos una es del 60–80%.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">2027 y adelante</div>
+        <div class="tl-title">Si ganas: CAPEX extra para escalar</div>
+        <div class="tl-body">Si ganas un apoyo (~$89,000 realista), se vuelve CAPEX adicional para escalar a Variante C o D. Si no ganas, ya tienes operación corriendo y la propuesta lista para la próxima convocatoria. En ambos casos, el negocio ya está en marcha.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Roadmap -->
+  <section id="roadmap" class="content-section">
+    <h2 class="section-title">🗺️ Roadmap Visual</h2>
+    <p class="card-desc" style="max-width:700px;margin-bottom:32px;">Cuatro fases, 18–24 meses. Sin ambigüedad: qué se hace, cuándo, y qué gatilla el siguiente paso.</p>
+
+    <h3 style="font-size:1.25rem;margin:32px 0 16px;color:var(--accent-navy);">Resumen Visual</h3>
+    <pre class="diagram" style="background:#f8fafc;border:1px solid var(--border-color);border-radius:var(--radius);padding:24px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;line-height:1.6;overflow-x:auto;white-space:pre;">FASE 1 (0–3m)     FASE 2 (3–8m)       FASE 3 (8–16m)        FASE 4 (16–24m)
+┌────────────┐    ┌────────────┐       ┌────────────┐        ┌────────────┐
+│ Validar &    │───▶│ Profesio-  │──────▶│ Microfáb.  │───────▶│ Célula     │
+│ Arrancar     │    │ nalizar    │       │ completa   │        │ Dual       │
+│ Variante A   │    │ Variante B │       │ Variante C │        │ Variante D │
+└────────────┘    └────────────┘       └────────────┘        └────────────┘
+$10.9k              $55k               $156k                  $320k
+30 pzs/mes          70 pzs/mes          100 pzs/mes           180 pzs/mes
+$52k/mes            $122k/mes           $207k/mes             $470k/mes</pre>
+
+    <h3 style="font-size:1.25rem;margin:40px 0 16px;color:var(--accent-navy);">Fase 1: Validar & Arrancar (0–3 meses)</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="v">$10,900</div><div class="l">Inversión inicial</div></div>
+      <div class="stat"><div class="v">Mes 5</div><div class="l">Punto equilibrio</div></div>
+      <div class="stat"><div class="v">30</div><div class="l">Pzs/mes objetivo</div></div>
+    </div>
+    <h4 style="margin:24px 0 12px;color:var(--accent-navy);">Qué hacer</h4>
+    <ul style="margin-left:20px;color:var(--text-muted);line-height:2;">
+      <li>Semana 1–2: Vender 3 consultorías técnicas a talleres ($1,500)</li>
+      <li>Semana 2–3: Pre-vender 20 piezas (30% dto, 50% anticipo = $9,800)</li>
+      <li>Semana 3–4: Crowdfunding Donadora ($15,000 meta)</li>
+      <li>Semana 5: Comprar Ender 3 S1 Pro + materiales ($10,900)</li>
+      <li>Mes 2: Entregar pre-ventas + nuevas ventas ($37,800 ingreso)</li>
+      <li>Mes 3: Reinvertir $45,000 → Bambu Lab X1 Carbon (Variante B)</li>
+    </ul>
+    <h4 style="margin:24px 0 12px;color:var(--accent-navy);">Gatillo a Fase 2</h4>
+    <p style="color:var(--text-muted);">20+ trabajos/mes consistentes 2 meses + lista de espera >1 semana</p>
+
+    <h3 style="font-size:1.25rem;margin:40px 0 16px;color:var(--accent-navy);">Fase 2: Profesionalizar (3–8 meses)</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="v">$55,000</div><div class="l">CAPEX total</div></div>
+      <div class="stat"><div class="v">Mes 6</div><div class="l">Recuperación CAPEX</div></div>
+      <div class="stat"><div class="v">70</div><div class="l">Pzs/mes objetivo</div></div>
+    </div>
+    <h4 style="margin:24px 0 12px;color:var(--accent-navy);">Qué hacer</h4>
+    <ul style="margin-left:20px;color:var(--text-muted);line-height:2;">
+      <li>Comprar Bambu Lab X1 Carbon + A1 Mini ($55k total)</li>
+      <li>Setup slicer profiles por material (PLA, PETG, ASA, Nylon, PEI)</li>
+      <li>SOP: calibración, limpieza, inspección, embalaje, envío</li>
+      <li>Contratar 1 operador medio tiempo ($4,500/mes)</li>
+      <li>Lanzar catálogo web + cotizador automático</li>
+      <li>Meta: 70 trabajos/mes consistentes mes 8</li>
+    </ul>
+
+    <h3 style="font-size:1.25rem;margin:40px 0 16px;color:var(--accent-navy);">Fase 3: Microfábrica Completa (8–16 meses)</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="v">$156,000</div><div class="l">CAPEX total</div></div>
+      <div class="stat"><div class="v">Mes 10</div><div class="l">Recuperación CAPEX</div></div>
+      <div class="stat"><div class="v">100</div><div class="l">Pzs/mes objetivo</div></div>
+    </div>
+    <h4 style="margin:24px 0 12px;color:var(--accent-navy);">Qué hacer</h4>
+    <ul style="margin-left:20px;color:var(--text-muted);line-height:2;">
+      <li>4× Bambu Lab X1C + 1× P1S (alta velocidad)</li>
+      <li>Post-procesado: lijado, pintado, annealed, packaging</li>
+      <li>Contratar 2 operadores tiempo completo + 1 QA</li>
+      <li>Sistema trazabilidad: QR por lote + certificado ético-técnico</li>
+      <li>Alianza con 3 talleres ancla (contrato marco 12 meses)</li>
+    </ul>
+
+    <h3 style="font-size:1.25rem;margin:40px 0 16px;color:var(--accent-navy);">Fase 4: Célula Dual (16–24 meses)</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="v">$320,000</div><div class="l">CAPEX total</div></div>
+      <div class="stat"><div class="v">Mes 18</div><div class="l">Recuperación CAPEX</div></div>
+      <div class="stat"><div class="v">180</div><div class="l">Pzs/mes objetivo</div></div>
+    </div>
+    <h4 style="margin:24px 0 12px;color:var(--accent-navy);">Qué hacer</h4>
+    <ul style="margin-left:20px;color:var(--text-muted);line-height:2;">
+      <li>Segunda célula idéntica en locación distinta (Veracruz puerto o Cardel)</li>
+      <li>Logística central: recepción pedidos → routing a célula óptima</li>
+      <li>Equipo comercial dedicado (2 vendedores B2B)</li>
+      <li>Explorar resina SLA para dental/joyería (margen 90%+)</li>
+      <li>Evaluar Variante E (Hub) si demanda >200 pzs/mes sostenido</li>
+    </ul>
+  </section>
+
+  <!-- Sección JRyCachetes -->
+  <section id="jrycachetes" class="content-section">
+    <h2 class="section-title">🤝 JRyCachetes — Resumen Ejecutivo</h2>
+    <p class="card-desc" style="max-width:700px;margin-bottom:32px;">Capital inicial <strong>$28,000 MXN</strong> (JR $17k + Cachetes $11k). Ingreso semanal propio <strong>$3,000</strong>. Objetivo: Variante A operativa en 4 semanas sin tocar el capital semilla.</p>
+
+    <h3 style="font-size:1.25rem;margin:32px 0 16px;color:var(--accent-navy);">Capital Inicial</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="v">$17,000</div><div class="l">Préstamo JR (sin intereses)</div></div>
+      <div class="stat"><div class="v">$11,000</div><div class="l">Aporte Cachetes</div></div>
+      <div class="stat"><div class="v">$28,000</div><div class="l">Total capital semilla</div></div>
+    </div>
+    <div class="note"><strong>Estructura:</strong> JR presta $17k sin intereses (pagadero al mes 6). Cachetes aporta $11k a cambio de participación en utilidades (por definir). El capital semilla NO se toca para gastos personales; solo para CAPEX y buffer operativo.</div>
+
+    <h3 style="font-size:1.25rem;margin:32px 0 16px;color:var(--accent-navy);">Flujo Semanal Propio</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="v">$3,000</div><div class="l">Ingreso semanal (tu trabajo)</div></div>
+      <div class="stat"><div class="v">$12,000</div><div class="l">Ingreso mensual (4 semanas)</div></div>
+      <div class="stat"><div class="v">$144,000</div><div class="l">Ingreso anual proyectado</div></div>
+    </div>
+    <p style="color:var(--text-muted);margin-top:16px;">Este ingreso cubre tus gastos personales y permite reinvertir en el negocio sin tocar el capital semilla.</p>
+
+    <h3 style="font-size:1.25rem;margin:32px 0 16px;color:var(--accent-navy);">Línea de Tiempo (4 Semanas a Variante A Operativa)</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-when">Semana 1</div>
+        <div class="tl-title">Setup & Compras</div>
+        <div class="tl-body">
+          <ul>
+            <li>Comprar Ender 3 S1 Pro + materiales ($10,900)</li>
+            <li>Configurar impresora + calibrar (2 días)</li>
+            <li>Imprimir 3 piezas de muestra del catálogo</li>
+            <li>Capital restante: ~$17,100</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Semana 2</div>
+        <div class="tl-title">Validación Comercial</div>
+        <div class="tl-body">
+          <ul>
+            <li>Visitar 10 talleres en Veracruz con piezas de muestra</li>
+            <li>Pre-vender 10 piezas (30% dto, 50% anticipo = $8,750)</li>
+            <li>Listar en Donadora crowdfunding ($15k meta)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Semana 3</div>
+        <div class="tl-title">Producción & Entrega</div>
+        <div class="tl-body">
+          <ul>
+            <li>Imprimir 10 piezas pre-vendidas</li>
+            <li>Entregar + cobrar 50% restante ($8,750)</li>
+            <li>Nuevas ventas orgánicas: meta 5 piezas ($4,375)</li>
+            <li>Ingreso semana 3: ~$17,500</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-when">Semana 4</div>
+        <div class="tl-title">Variante A Operativa</div>
+        <div class="tl-body">
+          <ul>
+            <li>Flujo semanal estabilizado: 8–12 piezas/semana</li>
+            <li>Ingreso mensual: ~$55,000–$70,000</li>
+            <li>Reinvertir $45,000 → Bambu Lab X1 Carbon (Variante B)</li>
+            <li>Capital semilla intacto: $17,100 + utilidades</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/nav.js"></script>
 </body>
 </html>
