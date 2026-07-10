@@ -3,96 +3,321 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Impresión 3D · Cardel, Veracruz — La Inconclusa</title>
-<meta name="description" content="Proyecto de inversión: negocio de impresión y diseño 3D en Ciudad Cardel, Veracruz. Recursos, análisis y dossier — por paxel80.">
+<title>Impresión 3D Cardel — Negocio de prototipado y piezas a pedido | La Inconclusa</title>
+<meta name="description" content="Oportunidad de inversión: negocio de impresión 3D en Cardel, Veracruz. Mercado local sin atender, anclado a red de fondas (Yésika) y comercio local. Dossier financiero completo, Council veredicto, plan de acción.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-  :root{--bg:#08080a;--surface:rgba(255,255,255,.035);--border:rgba(255,255,255,.08);--border2:rgba(217,169,60,.22);--text:#ECECEF;--muted:#9a9aa6;--faint:#6b6b78;--gold:#D9A93C;--gold2:#f0c75e;--bone:#F2EDE0;--radius:18px;--max:1060px;--green:#3ddc84}
+  :root{
+    --bg:#08080a; --surface:rgba(255,255,255,.035);
+    --border:rgba(255,255,255,.08); --border2:rgba(217,169,60,.22);
+    --text:#ECECEF; --muted:#9a9aa6; --faint:#6b6b78;
+    --gold:#D9A93C; --gold2:#f0c75e; --bone:#F2EDE0;
+    --green:#3ddc84; --yellow:#e0b341; --red:#e06a5a;
+    --radius:18px; --max:1100px;
+  }
   html{scroll-behavior:smooth}
-  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;background-image:radial-gradient(800px circle at 75% -5%,rgba(217,169,60,.08),transparent 45%)}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;background-image:radial-gradient(900px circle at 80% -8%,rgba(217,169,60,.08),transparent 50%)}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
   nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,8,10,.55);border-bottom:1px solid var(--border)}
-  .nav-in{max-width:var(--max);margin:0 auto;padding:15px 24px;display:flex;align-items:center;justify-content:space-between}
-  .brand{font-family:'Space Grotesk';font-weight:700;font-size:1.08rem;display:flex;align-items:center;gap:9px;color:var(--text);text-decoration:none}
+  .nav-in{max-width:var(--max);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:'Space Grotesk';font-weight:700;font-size:1.05rem;display:flex;align-items:center;gap:9px;color:var(--text);text-decoration:none}
   .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--gold2),var(--gold));box-shadow:0 0 12px var(--gold)}
   .back{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}.back:hover{color:var(--gold2)}
-  header{padding:80px 0 50px}
-  .crumb{font-family:'Space Grotesk';color:var(--gold);font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
-  .status{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;color:var(--muted);border:1px solid var(--border);background:var(--surface);padding:6px 14px;border-radius:100px;margin-bottom:22px}
+  header{padding:70px 0 40px}
+  .crumb{font-family:'Space Grotesk';color:var(--gold);font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .badge{font-size:.7rem;padding:2px 8px;border-radius:100px;background:rgba(217,169,60,.15);color:var(--gold2);border:1px solid var(--border2);font-weight:600}
+  .status{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;color:var(--muted);border:1px solid var(--border);background:var(--surface);padding:6px 14px;border-radius:100px;margin:16px 0}
   .sdot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
-  h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:18px}
-  h1 .grad{background:linear-gradient(120deg,var(--gold2),var(--gold) 50%,var(--bone));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .lead{font-size:clamp(1.02rem,2.2vw,1.22rem);color:var(--muted);max-width:620px}
-  section{padding:36px 0}
-  .eyebrow{font-family:'Space Grotesk';color:var(--gold);font-size:.8rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;margin-bottom:20px}
-  .grid{display:grid;gap:18px;grid-template-columns:repeat(2,1fr)}
-  @media(max-width:760px){.grid{grid-template-columns:1fr}}
-  a.card{display:block;text-decoration:none;color:inherit;background:rgba(12,12,15,.55);border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:transform .2s,border-color .2s,background .2s}
-  a.card:hover{transform:translateY(-5px);border-color:var(--border2);background:rgba(20,20,24,.7)}
-  .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(217,169,60,.16),rgba(217,169,60,.04));border:1px solid var(--border2);margin-bottom:18px;color:var(--gold2);font-size:1.3rem}
-  .card h3{font-family:'Space Grotesk';font-weight:600;font-size:1.18rem;margin-bottom:8px}
-  .card p{color:var(--muted);font-size:.94rem;margin-bottom:12px}
-  .card .go{color:var(--gold2);font-size:.86rem;font-weight:600}
-  .card .live{color:var(--green)}
-  .ficha{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;border:1px solid var(--border);border-radius:var(--radius);padding:30px;background:rgba(12,12,15,.5)}
-  @media(max-width:700px){.ficha{grid-template-columns:repeat(2,1fr);gap:24px}}
-  .ficha .k{color:var(--faint);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
-  .ficha .v{font-family:'Space Grotesk';font-weight:600;font-size:1.05rem;color:var(--text)}
-  footer{border-top:1px solid var(--border);padding:34px 0;margin-top:30px;color:var(--faint);font-size:.88rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(2.2rem,5.5vw,3.8rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:16px}
+  h1 .grad{background:linear-gradient(120deg,var(--gold2),var(--gold) 45%,var(--bone));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .lead{font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--muted);max-width:680px;margin-bottom:28px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:32px}
+  .btn{padding:14px 28px;border-radius:12px;font-weight:600;font-size:.95rem;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s}
+  .btn-pri{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1a1404;box-shadow:0 8px 30px rgba(217,169,60,.28)}
+  .btn-pri:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(217,169,60,.4)}
+  .btn-sec{border:1px solid var(--border);color:var(--text);background:var(--surface)}
+  .btn-sec:hover{border-color:var(--border2);transform:translateY(-3px)}
+  section{padding:50px 0;border-top:1px solid var(--border)}
+  section:first-of-type{border-top:none}
+  .eyebrow{font-family:'Space Grotesk';color:var(--gold);font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .eyebrow::before{content:'';width:28px;height:2px;background:linear-gradient(90deg,var(--gold2),transparent)}
+  h2{font-family:'Space Grotesk';font-weight:700;font-size:clamp(1.6rem,3.5vw,2.4rem);letter-spacing:-.02em;margin-bottom:10px;line-height:1.15}
+  .seclead{color:var(--muted);max-width:700px;margin-bottom:36px;font-size:1.05rem}
+  .grid{display:grid;gap:20px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:880px){.g3,.g2{grid-template-columns:1fr}}
+  .card{background:rgba(12,12,15,.55);backdrop-filter:blur(6px);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:transform .25s,border-color .25s,background .25s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+  .card::before{content:'';position:absolute;inset:0;background:radial-gradient(350px circle at var(--mx,50%) var(--my,0%),rgba(217,169,60,.07),transparent 40%);opacity:0;transition:opacity .3s}
+  .card:hover{transform:translateY(-6px);border-color:var(--border2);background:rgba(20,20,24,.7)}
+  .card:hover::before{opacity:1}
+  .ic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(217,169,60,.16),rgba(217,169,60,.04));border:1px solid var(--border2);margin-bottom:18px;color:var(--gold2);font-size:1.25rem}
+  .card h3{font-family:'Space Grotesk';font-weight:600;font-size:1.15rem;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.92rem;flex:1}
+  .card .go{color:var(--gold2);font-size:.82rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;margin-top:16px}
+  .card .go::after{content:'→';transition:transform .2s}.card:hover .go::after{transform:translateX(4px)}
+  .stat{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:760px){.stat{grid-template-columns:repeat(2,1fr);gap:24px}}
+  .stat-item{text-align:center;padding:24px;background:rgba(12,12,15,.5);border:1px solid var(--border);border-radius:16px}
+  .stat-item .n{font-family:'Space Grotesk';font-weight:700;font-size:clamp(2rem,4vw,2.8rem);background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1}
+  .stat-item .l{color:var(--muted);font-size:.85rem;margin-top:6px}
+  .tldr{border:1px solid var(--border2);border-radius:var(--radius);padding:24px 28px;background:linear-gradient(135deg,rgba(217,169,60,.08),rgba(12,12,15,.55));font-size:1.05rem;line-height:1.7}
+  .tldr b{color:var(--gold2)}
+  .phase{border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:14px;background:rgba(12,12,15,.5)}
+  .phase-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+  .phase-tag{font-family:'Space Grotesk';font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:100px;background:rgba(217,169,60,.15);color:var(--gold2);border:1px solid var(--border2)}
+  .phase-tag.green{background:rgba(61,220,132,.15);color:var(--green);border-color:rgba(61,220,132,.3)}
+  .phase-tag.yellow{background:rgba(224,179,65,.15);color:var(--yellow);border-color:rgba(224,179,65,.3)}
+  .phase-title{font-family:'Space Grotesk';font-weight:600;color:var(--text);font-size:1rem}
+  .phase p{color:#cfd2da;margin:0}
+  .step{background:rgba(217,169,60,.06);border:1px solid var(--border2);border-radius:14px;padding:16px 20px;margin-top:10px}
+  .step b{color:var(--gold2)}
+  .checklist{list-style:none;display:grid;gap:10px}
+  .checklist li{display:flex;align-items:flex-start;gap:10px;padding:12px 16px;background:rgba(12,12,15,.5);border:1px solid var(--border);border-radius:12px}
+  .checklist li::before{content:'✓';width:20px;height:20px;border-radius:50%;background:rgba(61,220,132,.2);color:var(--green);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+  .warn{background:rgba(224,106,90,.1);border:1px solid rgba(224,106,90,.3);border-radius:12px;padding:16px 20px;margin:16px 0;color:#f0a89c}
+  .warn b{color:var(--red)}
+  .highlight{background:rgba(61,220,132,.1);border:1px solid rgba(61,220,132,.3);border-radius:12px;padding:16px 20px;margin:16px 0}
+  .highlight b{color:var(--green)}
+  .quote{border-left:3px solid var(--gold2);background:rgba(217,169,60,.05);padding:16px 20px;border-radius:0 12px 12px 0;font-style:italic;color:#cfd2da;margin:16px 0}
+  .council-meta{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+  .council-member{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:.8rem}
+  .council-member b{color:var(--gold2)}
+  .footer-cta{text-align:center;padding:40px 24px;background:rgba(12,12,15,.6);border:1px solid var(--border2);border-radius:24px;margin-top:20px}
+  .footer-cta h3{font-family:'Space Grotesk';font-weight:700;font-size:1.5rem;margin-bottom:10px}
+  .footer-cta p{color:var(--muted);max-width:500px;margin:0 auto 24px}
+  footer{border-top:1px solid var(--border);padding:30px 0;margin-top:20px;color:var(--faint);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   footer a{color:var(--muted);text-decoration:none}footer a:hover{color:var(--gold2)}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
 <nav><div class="nav-in">
   <a class="brand" href="/"><span class="dot"></span> La Inconclusa</a>
-  <a class="back" href="/#proyectos">← Todos los proyectos</a>
+  <a class="back" href="/#proyectos">← Proyectos</a>
 </div></nav>
 
-<header><div class="wrap">
-  <div class="crumb">Proyecto · Inversión</div>
-  <div class="status"><span class="sdot"></span> Dossier listo · buscando socio</div>
-  <h1>Impresión <span class="grad">3D</span><br>Cardel, Veracruz</h1>
-  <p class="lead">Un negocio de impresión y diseño 3D para Ciudad Cardel y la región: prototipado, piezas a pedido y diseño. Mercado, finanzas y plan — analizados y redactados con IA. Aquí están todos sus recursos.</p>
-</div></header>
+<header>
+  <div class="wrap">
+    <div class="crumb">Proyecto de Inversión <span class="badge">Busco Socio</span></div>
+    <div class="status"><span class="sdot"></span> Dossier completo · Council veredicto unánime · Listo para ejecutar</div>
+    <h1>Impresión 3D Cardel — <span class="grad">Negocio de prototipado y piezas a pedido</span></h1>
+    <p class="lead">Un taller de impresión y diseño 3D en Ciudad Cardel, Veracruz. Mercado local virgen (talleres, agro, fondas, regalos), anclado a red de comercios reales (Antojitos Yésika, Mercadito). Inversión mínima ~$10–13k MXN. Dossier financiero, Council de 18 sabios y plan de acción listos.</p>
+    <div class="cta-row reveal">
+      <a href="https://portafolio.lainconclusa.com/html/impresion-3d.html" target="_blank" rel="noopener" class="btn btn-pri">Ver Dossier Completo →</a>
+      <a href="mailto:paxel80@lainconclusa.com?subject=Inter%C3%A9s%20Inversi%C3%B3n%20Impresi%C3%B3n%203D%20Cardel" class="btn btn-sec">Contactar para Invertir</a>
+    </div>
 
-<section><div class="wrap">
-  <div class="eyebrow">Los recursos</div>
-  <div class="grid">
-    <a class="card" href="./council-todas-las-posibilidades.html">
-      <div class="ic">🏛️</div>
-      <h3>Council: la mejor ruta</h3>
-      <p>18 sabios deliberan TODO el abanico de creación y uso de la impresora y fijan la mejor ruta por fases para tu contexto.</p>
-      <span class="go live">● Abrir veredicto →</span>
-    </a>
-    <a class="card" href="./council-equipo-minimo.html">
-      <div class="ic">⚖️</div>
-      <h3>Council: Equipo Mínimo</h3>
-      <p>18 sabios-IA deliberan cuál es el equipo mínimo para arrancar el negocio sin sobre-invertir — con semáforos por decisión.</p>
-      <span class="go live">● Abrir reporte →</span>
-    </a>
-    <a class="card" href="https://portafolio.lainconclusa.com/html/impresion-3d.html" target="_blank" rel="noopener">
-      <div class="ic">📊</div>
-      <h3>Dossier de inversión</h3>
-      <p>Paquete completo para socio: mercado, finanzas (CAPEX/OPEX, TIR/VAN, payback), catálogo y sala de datos.</p>
-      <span class="go">Ver portafolio →</span>
-    </a>
+    <div class="stat reveal">
+      <div class="stat-item"><div class="n">~$10–13k</div><div class="l">CAPEX Mínimo (1 impresora + insumos)</div></div>
+      <div class="stat-item"><div class="n">5.5/5.5</div><div class="l">Peso Council Unánime</div></div>
+      <div class="stat-item"><div class="n">3–5</div><div class="l">Ventas meta (6 sem) para 2da ronda</div></div>
+      <div class="stat-item"><div class="n">6 meses</div><div class="l">Promesa de devolución a fiadora</div></div>
+    </div>
   </div>
-</div></section>
+</header>
 
-<section><div class="wrap">
-  <div class="eyebrow">La ficha</div>
-  <div class="ficha">
-    <div><div class="k">Ubicación</div><div class="v">Cardel, Ver.</div></div>
-    <div><div class="k">Tipo</div><div class="v">Inversión</div></div>
-    <div><div class="k">Sector</div><div class="v">Prototipado 3D</div></div>
-    <div><div class="k">Estado</div><div class="v">Dossier listo</div></div>
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">Veredicto Council of High Intelligence</div>
+    <h2 class="reveal">18 sabios deliberaron: <span style="color:var(--green)">UNA sola impresora, sin resina, anclada a tu ecosistema</span></h2>
+    <p class="seclead reveal">Cinco miembros (Musashi, Sun Tzu, Torvalds 1.5×, Machiavelli, Munger) en 3 rondas. Convergencia total: el dossier original de $231k se reduce a <b>~$10–13k</b> (≈5%). El activo real no es la máquina, es la <b>confianza familiar</b> y la <b>capacidad de vender</b>.</p>
+
+    <div class="tldr reveal">
+      🎯 <b>En una frase:</b> Valida GRATIS 1–2 sem en Tinkercad → compra UNA impresora plug-and-play (Bambu A1 Mini) → ancla en lo que YA tienes (Yésika + red Cardel) → imprime modelos gratis y deja que el mercado te diga el nicho → <b>nunca arriesgues el ingreso de antojitos</b>. La impresora no es un negocio que persigues; es una herramienta que, anclada a tu ecosistema, se paga sola.
+    </div>
+
+    <div class="council-meta reveal">
+      <span class="council-member"><b>Musashi</b> — timing / golpe decisivo</span>
+      <span class="council-member"><b>Sun Tzu</b> — estrategia / terreno</span>
+      <span class="council-member"><b>Torvalds</b> ⭐1.5× — ingeniería / "ship it"</span>
+      <span class="council-member"><b>Machiavelli</b> — incentivos / dinámica familiar</span>
+      <span class="council-member"><b>Munger</b> — inversión / evitar la ruina</span>
+    </div>
+
+    <div class="grid g3">
+      <div class="card reveal">
+        <div class="ic">🟢</div>
+        <h3>Qué SÍ comprar (Fase 1)</h3>
+        <p><b>Bambu Lab A1 Mini</b> sola ($7,769) — auto-calibra, lista en 15 min. Si aprieta: <b>Creality Ender 3 V3 SE</b> (~$4,300). Filamento PLA 3–5 kg ($1,200–1,500). Básicos cama/espátula/alcohol ($1k). <b>Total ~$9,400–13,000 MXN.</b></p>
+      </div>
+      <div class="card reveal">
+        <div class="ic">🔴</div>
+        <h3>Qué NO comprar ahora</h3>
+        <p>Resina MSLA (tóxica, EPP, lavado, UV). AMS multicolor (lujo). Acondicionamiento taller $15k (solo si resina). P1S/2da impresora/Saturn 4. BBVA (2do acreedor sobre crédito abuela). Marketing pagado $12k. Contador caro. WhatsApp + FB Cardel basta.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic">⚖️</div>
+        <h3>Comparativa</h3>
+        <p>Dossier original pedía <b>$231,000</b> en 2 etapas. Council redujo a <b class="verde">~$10–13k</b> (≈5%). Menos equipo, mismo primer paso: <b>validar que sabes vender</b>. La complejidad prematura es la raíz de todo mal (Torvalds).</p>
+      </div>
+    </div>
   </div>
-</div></section>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">La ruta por fases (plan de acción)</div>
+    <h2 class="reveal">De $0 a ingresos recurrentes en 6 meses</h2>
+    <p class="seclead reveal">Cada fase tiene criterios de salida claros. Si no se cumplen, no se avanza. Kill criteria incluidos.</p>
+
+    <div class="phase reveal">
+      <div class="phase-head"><span class="phase-tag green">🟢 Fase 0 — Esta semana · $0</span><span class="phase-title">Validación gratis en Tinkercad</span></div>
+      <p>Diseña 3 piezas reales de tu mundo: soporte/porta-menú con QR para <b>Antojitos Yésika</b>, figura de <b>Pax80</b>, letrero del <b>Mercadito</b>. En paralelo sondea demanda en grupos WhatsApp/FB de Cardel. <b>Meta: 3 "¿cuánto?" en 2 semanas.</b> Si no diseñas nada ni hay interesados → te ahorraste el dinero.</p>
+    </div>
+
+    <div class="phase reveal">
+      <div class="phase-head"><span class="phase-tag green">🟢 Fase 1 — Comprar (1–2 sem de ingreso)</span><span class="phase-title">Impresora plug-and-play</span></div>
+      <p><b>Bambu Lab A1 Mini</b> (sola, sin AMS) — calibra sola = no la abandonas. Presupuesto ajustado: <b>Creality Ender 3 V3 SE</b> (~$4,300, auto-nivelación). <span class="r">No</span> usada sin auto-nivel; <span class="r">no</span> resina. Solo PLA.</p>
+    </div>
+
+    <div class="phase reveal">
+      <div class="phase-head"><span class="phase-tag green">🟢 Fase 2 — Primeros 30 días</span><span class="phase-title">Vende, no imprimas catálogo</span></div>
+      <p>Imprime modelos <b>gratis</b> (Printables/Thingiverse/MakerWorld). 3 anclas: utilería Yésika (soporte QR, números mesa) + figuras Pax80 + personalizados locales ($100–150). Vende cara a cara y WhatsApp, no MercadoLibre. 💎 El soporte de Yésika es tu <b>caso de éxito</b> para vender Menú Digital / Paxel Automatiza a otras 50 fondas — ése es el premio gordo.</p>
+    </div>
+
+    <div class="phase reveal">
+      <div class="phase-head"><span class="phase-tag yellow">🟡 Fase 3 — Cabalga las temporadas</span><span class="phase-title">Agosto → Noviembre → Diciembre</span></div>
+      <p>Regreso a clases (ago) → Día de Muertos (calaveritas personalizadas $150–250) → Navidad. Empieza <b>ya</b> para llegar con producto.</p>
+    </div>
+
+    <div class="phase reveal">
+      <div class="phase-head"><span class="phase-tag yellow">🟡 Fase 4 — El activo que crece</span><span class="phase-title">Biblioteca de diseños propios</span></div>
+      <p>Cuando el mercado revele el nicho que se repite, construye tu <b>biblioteca de diseños</b>. La impresora se deprecia; la biblioteca se aprecia. Nicho: <b>local + urgente + personalizado</b> (repuestos talleres/agro), donde China no llega.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">La parte moral (dealbreakers)</div>
+    <h2 class="reveal">Cómo le pides a tu abuela — sin ponerla en riesgo</h2>
+    <p class="seclead reveal">4 de 5 miembros marcaron esto como <span class="badge" style="background:rgba(220,106,90,.15);color:var(--red);border-color:rgba(224,106,90,.3)">DEALBREAKER</span>: endeudar a tu abuela por >$13k o pedir resina sin ventas es activamente dañino.</p>
+
+    <div class="grid g2">
+      <div class="card reveal">
+        <div class="ic">1️⃣</div>
+        <h3>La abuela NO es inversionista — es fiadora</h3>
+        <p>Un inversionista <i>tiene</i> capacidad de pérdida; tu abuela, <b>no</b>. Tratarla como "inversión" esconde que <b>ella absorbe todo el riesgo y tú poco</b>. Sé honesto con eso. (Machiavelli)</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic">2️⃣</div>
+        <h3>Coppel cobra 38–60% anual</h3>
+        <p>Cada mes sin ventas, tu abuela paga intereses <b>invisibles</b> que tú nunca ves en tu modelo. Por eso hay que <b>vender rápido</b>. (Munger)</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic">3️⃣</div>
+        <h3>Tú aportas un tercio (~$3–3.5k) en efectivo</h3>
+        <p>Registrado en libreta como "aporte propio". Si no puedes juntar eso, el negocio aún no está listo. Es tu <b>skin-in-the-game</b> real. (Torvalds / Sun Tzu)</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic">4️⃣</div>
+        <h3>Firma una promesa escrita</h3>
+        <p><i>"Erik se compromete a pagar a la abuela en 6 meses o devolver el equipo en buen estado si no hay tracción de ventas."</i> Esto convierte tu palabra en <b>compromiso exigible</b> y protege la mesa familiar. Sin esto, el "préstamo" es traslado de riesgo disfrazado. (Machiavelli)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">Kill Criteria — Cuándo se cancela el plan</div>
+    <h2 class="reveal">Reglas duras para no perder dinero ni familia</h2>
+    <div class="warn reveal">
+      <b>⛔ Si para el 31 jul 2026</b> la Bambu Lab A1 <b>no aparece listada físicamente en Coppel</b> (o ruta alterna verificada) con sobreprecio < 25% sobre $7,769 → <b>cancela la compra, no le pidas a tu abuela</b>.
+    </div>
+    <div class="warn reveal">
+      <b>⛔ Si a 6 semanas de la 1ª impresión</b> (meta: 31 ago 2026) <b>no cierras 3–5 ventas reales</b> (cobradas y entregadas) → <b>devuelve/vende el equipo, no pidas 2da ronda (resina)</b>.
+    </div>
+    <div class="warn reveal">
+      <b>⛔ Si no firmas la promesa ni aportas tu tercio</b> antes de la compra → <b>no se mueve el crédito de tu abuela</b>.
+    </div>
+
+    <div class="highlight reveal">
+      <b>✅ Próximo paso innegociable (Munger):</b> Verificar físicamente la Bambu Lab A1 en Coppel de Cardel/Xalapa y su precio de lista, <b>antes del 31 jul 2026</b>. Sin ese dato, el juego no empieza.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">Mercado y oportunidad real</div>
+    <h2 class="reveal">Por qué Cardel y por qué ahora</h2>
+    <div class="grid g3">
+      <div class="card reveal">
+        <div class="ic">🏭</div>
+        <h3>Talleres y agro sin proveedor local</h3>
+        <p>Repuestos plásticos, garras, soportes, adaptadores. Hoy piden a Ciudad de México o importan: 2–3 semanas de espera. Tú entregas en horas.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic">🍽️</div>
+        <h3>Red de fondas (ancla Yésika)</h3>
+        <p>50+ fondas en Cardel/región. Menú QR, señalética, porta-cubiertos, números de mesa. Cada fonda = cliente recurrente + vitrina para otras.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic">🎁</div>
+        <h3>Regalos personalizados estacionales</h3>
+        <p>Día Muertos (calaveritas), Navidad (adornos), Día Madre/Padre, cumpleaños. Margen 3–5× en piezas de $50–250. WhatsApp + entrega personal = 0 logística.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic">🎬</div>
+        <h3>Merch de Pax80 (IP propia)</h3>
+        <p>Figuras de los 7 personajes. IP controlada, comunidad fiel. Diferenciador vs competidores genéricos.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic">📱</div>
+        <h3>Canal: WhatsApp + FB Cardel</h3>
+        <p>Cero costo adquisición. Grupos locales, mercado,pos de compras/ventas, recomendaciones boca a boca. CAC ≈ $0.</p>
+      </div>
+      <div class="card reveal">
+        <div class="ic">📈</div>
+        <h3>Escalera de valor</h3>
+        <p>Impresión → Diseño → Menú Digital/POS (Yésika) → Paxel Automatiza (otras fondas). La impresora abre la puerta al SaaS real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow reveal">Lo que el Council NO sabe (necesito de ti)</div>
+    <h2 class="reveal">Datos para cerrar el dossier y tomar decisión</h2>
+    <ul class="checklist reveal">
+      <li>¿Coppel lista físicamente la A1? ¿A qué precio y plazo exacto?</li>
+      <li>¿Cuánto puedes juntar <b>hoy mismo</b> en efectivo para tu tercio (~$3–3.5k)?</li>
+      <li>¿Hay demanda real en Cardel para piezas FDM/PLA (repuestos, prototipos, regalos) o el mercado exige resina (joyería/miniaturas/dental)?</li>
+      <li>¿Qué tasa exacta le daría Coppel a tu abuela? Sin eso no calculamos la carga mensual de intereses.</li>
+    </ul>
+
+    <div class="quote reveal">
+      "Si la Fase 0 te paraliza, compra ya la Ender 3 V3 SE e imprime para ti/Yésika 2 semanas — para tu cerebro, el juguete en la mano es el único arranque." — <b>Watts + Torvalds (voto minoritario)</b>
+    </div>
+  </div>
+</section>
+
+<div class="footer-cta reveal">
+  <h3>¿Listo para revisar números y firmar la hoja de términos?</h3>
+  <p>El dossier completo con CAPEX/OPEX, TIR/VAN, payback, catálogo de piezas, semáforos de riesgo y sala de datos está listo. Agendamos 30 min, lo recorres y decidimos.</p>
+  <div class="cta-row" style="justify-content:center">
+    <a href="https://portafolio.lainconclusa.com/html/impresion-3d.html" target="_blank" rel="noopener" class="btn btn-pri">Ver Dossier Inversión →</a>
+    <a href="mailto:paxel80@lainconclusa.com?subject=Inter%C3%A9s%20Inversi%C3%B3n%20Impresi%C3%B3n%203D%20Cardel" class="btn btn-sec">Escribir a Erik</a>
+  </div>
+</div>
 
 <footer><div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:12px">
-  <span>paxel80 © 2026 · La Inconclusa</span>
-  <a href="mailto:paxel80@lainconclusa.com">paxel80@lainconclusa.com</a>
+  <span>paxel80 © 2026 · La Inconclusa — Proyecto exclusivo Impresión 3D Cardel</span>
+  <a href="mailto:paxel80@lainconclusa.com" style="color:var(--muted);text-decoration:none">paxel80@lainconclusa.com</a>
 </div></footer>
+
+<script>
+  // Scroll reveal
+  const ior = new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ior.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';ior.observe(el);});
+  // Card hover glow
+  document.querySelectorAll('.card').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});});
+</script>
 </body>
 </html>
