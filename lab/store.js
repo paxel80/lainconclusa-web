@@ -25,12 +25,13 @@ const store = {
   init() {
     this.loadFromStorage();
     if (this.state.ideas.length === 0) {
-      this.loadSeedData();
+      return this.loadSeedData();
     }
+    return Promise.resolve();
   },
 
   loadSeedData() {
-    fetch('data/seed.json')
+    return fetch('data/seed.json')
       .then(r => r.json())
       .then(data => {
         this.state.ideas = data.ideas;
