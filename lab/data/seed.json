@@ -1,0 +1,410 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-07-10",
+    "isSeed": true,
+    "demo": true
+  },
+  "config": {
+    "currency": "MXN",
+    "currencySymbol": "$",
+    "taxRatePct": 30,
+    "scoring": {
+      "weights": {
+        "demandEvidence": 0.25,
+        "unitEconomics": 0.20,
+        "capitalEfficiency": 0.15,
+        "technicalRisk": 0.15,
+        "timeToFirstSale": 0.10,
+        "recurrenceScalability": 0.10,
+        "synergy": 0.05
+      },
+      "thresholds": { "verde": 75, "amarillo": 55, "naranja": 35, "rojo": 0 }
+    },
+    "riskThresholds": { "verde": 75, "amarillo": 55, "naranja": 35, "rojo": 0 },
+    "cashReserveMonths": 3,
+    "advancePolicy": "requerido",
+    "creditLimit": 50000,
+    "minDebtCoverage": 1.5,
+    "ideaStates": ["borrador", "investigacion", "piloto", "validada", "escalando", "pausada", "descartada"],
+    "categories": ["manufactura", "acuicultura", "agricultura", "logistica", "capacitacion", "software", "energia", "comercio"],
+    "locations": ["paxel80", "cardel", "campeche"],
+    "users": [
+      { "id": "u1", "name": "Erik (Fundador)", "role": "admin" },
+      { "id": "u2", "name": "Socio / Inversor", "role": "investor" },
+      { "id": "u3", "name": "Asesor Técnico", "role": "advisor" }
+    ],
+    "pax80CriticityPolicy": {
+      "verde": ["jigs", "fixtures ligeros", "guías", "protectores", "organizadores", "piezas auxiliares"],
+      "amarillo": ["piezas de desgaste moderado", "exposición ambiental moderada"],
+      "naranja": ["carga relevante", "quimicos", "tolerancias estrictas", "ambientes severos"],
+      "rojo": ["frenos", "direccion", "estructuras criticas", "presion", "combustible", "gas", "implantes", "dispositivos regulados", "navegacion", "salvamento"]
+    }
+  },
+  "ideas": [
+    {
+      "id": "idea-001",
+      "name": "Hub Paxel80 Cardel",
+      "description": "Microfábrica B2B de manufactura aditiva para soluciones funcionales no críticas: jigs, fixtures ligeros, guías, plantillas, protectores, carcasas, organización industrial, piezas auxiliares, digitalización CAD e inventario digital privado.",
+      "problem": "Talleres y empresas de Cardel/Veracruz tienen tiempos muertos por falta de piezas de repuesto, utillajes artesanales imprecisos y procesos sin documentación técnica.",
+      "valueProposition": "Producción bajo demanda de utillaje técnico preciso, reducción de tiempo muerto, inventario digital privado y continuidad operativa para B2B industrial y agroindustrial.",
+      "location": "cardel",
+      "category": "manufactura",
+      "state": "investigacion",
+      "riskGlobal": "amarillo",
+      "priority": 1,
+      "responsible": "u1",
+      "dependencies": ["Requiere impresora A1 Mini en sitio", "Requiere al menos 1 cliente ancla"],
+      "assumptions": ["A1 Mini disponible en Coppel a precio regular", "Demanda real existe en talleres de Cardel"],
+      "createdAt": "2026-06-01",
+      "updatedAt": "2026-07-08",
+      "lastAnalyzedAt": "2026-07-08",
+      "summary": {
+        "capexMin": 47500,
+        "timeToFirstSaleMonths": 1,
+        "monthlyRevenueTarget": 15000,
+        "grossMarginPct": 55,
+        "evidenceLevel": 2,
+        "nextStep": "30 entrevistas B2B y 5 pilotos pagados antes del 31 ago 2026"
+      },
+      "commercial": {
+        "marketSizeTAM": 12000000,
+        "marketSizeSAM": 1800000,
+        "marketSizeSOM": 180000,
+        "targetClients": ["Talleres mecánicos Cardel", "Empresas agroindustriales zona Cardel", "Mantto industrial"],
+        "interviewsDone": 8,
+        "interestedClients": 3,
+        "paidPilots": 0,
+        "loiCount": 0,
+        "anchorClient": null,
+        "avgTicket": 1500,
+        "purchaseFrequency": "mensual",
+        "salesChannel": "WhatsApp + visita directa",
+        "competitors": ["Imprentas 3D locales informales", "Compra en CDMX"],
+        "differentiation": "Precisión técnica, trazabilidad, enfoque B2B industrial"
+      },
+      "operational": {
+        "teamRequired": ["Operador de impresora"],
+        "spaceRequired": "4 m² con ventilación",
+        "utilities": { "water": false, "energy": true, "internet": true, "logistics": true },
+        "criticalSuppliers": ["Bambu Lab (impresora)", "Filamentos locales"],
+        "headcount": 1,
+        "maxMonthlyCapacity": 200,
+        "bottlenecks": ["Disponibilidad de filamento", "Electricidad fluctuante"],
+        "backupPlan": "Power bank para cortes cortos; filamento de respaldo"
+      },
+      "financial": {
+        "capexInitial": 47500,
+        "fixedCostsMonthly": 4500,
+        "variableCostPerUnit": 675,
+        "salePrice": 1500,
+        "contributionMargin": 825,
+        "contributionMarginPct": 55,
+        "grossMargin": 55,
+        "breakevenUnits": 6,
+        "breakevenMonths": 1,
+        "workingCapital": 13500,
+        "expectedAdvance": 50,
+        "collectionDays": 15,
+        "creditRequired": 0,
+        "debtMonthlyPayment": 0,
+        "cashReserve": 13500,
+        "scenarios": {
+          "pesimista": { "monthlyRevenue": 6000, "monthlyVariableCosts": 2700, "monthlyFixedCosts": 4500, "ebitda": -1200 },
+          "realista": { "monthlyRevenue": 15000, "monthlyVariableCosts": 6750, "monthlyFixedCosts": 4500, "ebitda": 3750 },
+          "normal": { "monthlyRevenue": 22500, "monthlyVariableCosts": 10125, "monthlyFixedCosts": 4500, "ebitda": 7875 },
+          "ideal": { "monthlyRevenue": 37500, "monthlyVariableCosts": 16875, "monthlyFixedCosts": 4500, "ebitda": 16125 }
+        },
+        "assumptions": [
+          { "key": "precio_promedio", "label": "Precio promedio por pieza", "value": 1500, "unit": "MXN", "confidence": "media" },
+          { "key": "costo_filamento", "label": "Costo filamento por pieza", "value": 200, "unit": "MXN", "confidence": "media" },
+          { "key": "tiempo_pieza", "label": "Tiempo por pieza", "value": 3, "unit": "horas", "confidence": "alta" },
+          { "key": "ocupacion_mes", "label": "Ocupación objetivo", "value": 50, "unit": "%", "confidence": "baja" }
+        ],
+        "updatedAt": "2026-07-08"
+      },
+      "risks": [
+        { "id": "r1", "category": "comercial", "title": "Sin demanda validada", "description": "No hay clientes firmados ni LOIs", "probability": "alta", "impact": "alto", "mitigation": "Entrevistas + pilotos antes de comprar equipo", "responsible": "u1", "status": "mitigando", "nextReview": "2026-08-31" },
+        { "id": "r2", "category": "operativo", "title": "Cortes de electricidad", "description": "Cardel tiene infraestructura eléctrica inestable", "probability": "media", "impact": "medio", "mitigation": "UPS/inversor como respaldo", "responsible": "u1", "status": "identificado", "nextReview": "2026-07-31" },
+        { "id": "r3", "category": "financiero", "title": "Capital insuficiente para iniciar", "description": "Solo se tiene ~50% del CAPEX necesario", "probability": "media", "impact": "alto", "mitigation": "Venta de piezas de desecho + anticipo de cliente", "responsible": "u1", "status": "mitigando", "nextReview": "2026-08-15" }
+      ],
+      "evidence": [
+        { "id": "e1", "type": "entrevista", "date": "2026-06-15", "source": "Talleres mecánicos Cardel (8 entrevistas)", "reliability": "media", "finding": "3/8 talleres interesados, ninguno ha cotizado actualmente", "decisionAffected": "Prospecto válido para piloto" },
+        { "id": "e2", "type": "aprendizaje", "date": "2026-06-20", "source": "Sesión con Claude Code", "reliability": "baja", "finding": "Proveedores de filamento en Veracruz existen pero con precios 20% arriba de CDMX", "decisionAffected": "Evaluar compra en CDMX + envío" }
+      ],
+      "milestones": [
+        { "id": "m1", "phase": "validar", "title": "30 entrevistas B2B completas", "budgetMax": 0, "responsible": "u1", "targetDate": "2026-08-31", "exitCondition": "Mínimo 5 interesados reales", "evidenceRequired": ["Bitácora de entrevistas"], "dependencies": [], "mainRisk": "Fatiga de reuniones sin cierre", "status": "en_progreso" },
+        { "id": "m2", "phase": "validar", "title": "5 pilotos pagados", "budgetMax": 5000, "responsible": "u1", "targetDate": "2026-09-30", "exitCondition": "Mínimo 3 pilotos completados con pago", "evidenceRequired": ["Facturas o recibos"], "dependencies": ["m1"], "mainRisk": "Clientes piden gratis", "status": "pendiente" },
+        { "id": "m3", "phase": "pilotear", "title": "Compra A1 Mini (solo con evidencia)", "budgetMax": 42500, "responsible": "u1", "targetDate": "2026-10-31", "exitCondition": "Al menos 1 LOI o anticipo >= 50%", "evidenceRequired": ["LOI o anticipo >= $7,500 MXN"], "dependencies": ["m2"], "mainRisk": "Precio inflado en Coppel", "status": "pendiente" }
+      ]
+    },
+    {
+      "id": "idea-002",
+      "name": "Tilapia Escalonada Campeche",
+      "description": "Producción escalonada de tilapiaapia en las 6 pozas existentes del rancho en Campeche (~40x100x4m cada una), con modelo de preengorda o engorda controlada para venta a intermediaries o consumo directo.",
+      "problem": "Las 6 pozas están subutilizadas. Se requiere validar demanda, calidad de agua, costos reales de alimento y canal de venta antes de invertir en infraestructura acuícola.",
+      "valueProposition": "Producción de proteína animal de bajo costo con venta garantizada a intermediaries locales o procesadores. Escalamiento gradual contra evidencia.",
+      "location": "campeche",
+      "category": "acuicultura",
+      "state": "investigacion",
+      "riskGlobal": "amarillo",
+      "priority": 2,
+      "responsible": "u1",
+      "dependencies": ["Análisis de agua vigente", "Permisos vigentes de CONAPESCA/RNPA", "Evaluación de infraestructura de pozas"],
+      "assumptions": ["Agua disponible y apta para tilapia", "Pozas en condición operativa", "Demanda local existe"],
+      "createdAt": "2026-06-10",
+      "updatedAt": "2026-07-10",
+      "lastAnalyzedAt": "2026-07-10",
+      "summary": {
+        "capexMin": null,
+        "timeToFirstSaleMonths": null,
+        "monthlyRevenueTarget": null,
+        "grossMarginPct": null,
+        "evidenceLevel": 1,
+        "nextStep": "Análisis de agua + levanta inventario Infraestructura + entrevista compradores potenciales"
+      },
+      "commercial": {
+        "marketSizeTAM": null,
+        "marketSizeSAM": null,
+        "marketSizeSOM": null,
+        "targetClients": ["Intermediarios de pescado en mercados de Campeche", "Restaurantes locales", "Venta directa en rancho"],
+        "interviewsDone": 0,
+        "interestedClients": 0,
+        "paidPilots": 0,
+        "loiCount": 0,
+        "anchorClient": null,
+        "avgTicket": null,
+        "purchaseFrequency": "unica",
+        "salesChannel": "Por definir",
+        "competitors": ["Productores de tilapia en Champotón", "Importación de Chiapas"],
+        "differentiation": "Proximidad geográfica + trazabilidad del origen"
+      },
+      "operational": {
+        "teamRequired": ["Por definir tras evaluación"],
+        "spaceRequired": "6 pozas ~24,000 m³ agua",
+        "utilities": { "water": true, "energy": true, "internet": false, "logistics": true },
+        "criticalSuppliers": ["Alimento para tilapia (por cotizar)", "Semilla/juveniles (por cotizar)"],
+        "headcount": null,
+        "maxMonthlyCapacity": null,
+        "bottlenecks": ["Calidad/renovación del agua", "Alimento disponible localmente", "Mano de obra local"],
+        "backupPlan": "Pausar si costos de alimento superan proyecciones"
+      },
+      "financial": {
+        "capexInitial": null,
+        "fixedCostsMonthly": null,
+        "variableCostPerUnit": null,
+        "salePrice": null,
+        "contributionMargin": null,
+        "contributionMarginPct": null,
+        "grossMargin": null,
+        "breakevenUnits": null,
+        "breakevenMonths": null,
+        "workingCapital": null,
+        "expectedAdvance": 30,
+        "collectionDays": 30,
+        "creditRequired": null,
+        "debtMonthlyPayment": null,
+        "cashReserve": null,
+        "scenarios": {
+          "pesimista": { "monthlyRevenue": 0, "monthlyVariableCosts": 0, "monthlyFixedCosts": 0, "ebitda": 0 },
+          "realista": { "monthlyRevenue": null, "monthlyVariableCosts": null, "monthlyFixedCosts": null, "ebitda": null },
+          "normal": { "monthlyRevenue": null, "monthlyVariableCosts": null, "monthlyFixedCosts": null, "ebitda": null },
+          "ideal": { "monthlyRevenue": null, "monthlyVariableCosts": null, "monthlyFixedCosts": null, "ebitda": null }
+        },
+        "assumptions": [
+          { "key": "precio_kg", "label": "Precio por kg tilapia (supuesto)", "value": null, "unit": "MXN/kg", "confidence": "baja" },
+          { "key": "costo_alimento", "label": "Costo alimento por kg producido (supuesto)", "value": null, "unit": "MXN/kg", "confidence": "baja" },
+          { "key": "supervivencia", "label": "Tasa de supervivencia (supuesto)", "value": 80, "unit": "%", "confidence": "baja" }
+        ],
+        "updatedAt": "2026-07-10"
+      },
+      "risks": [
+        { "id": "r1", "category": "operativo", "title": "Calidad de agua no apta", "description": "No se ha hecho análisis de agua en las pozas", "probability": "media", "impact": "alto", "mitigation": "Análisis de agua antes de cualquier inversión", "responsible": "u1", "status": "identificado", "nextReview": "2026-07-31" },
+        { "id": "r2", "category": "legal", "title": "Permisos vencidos o inválidos", "description": "CONAPESCA/RNPA/SADER requieren verificación de vigencia", "probability": "media", "impact": "alto", "mitigation": "Verificar vigencia, especie, modalidad y alcance de cada permiso", "responsible": "u1", "status": "identificado", "nextReview": "2026-07-20" },
+        { "id": "r3", "category": "comercial", "title": "Sin demanda confirmada", "description": "No hay entrevistas con compradores potenciales", "probability": "alta", "impact": "alto", "mitigation": "Entrevistas con intermediarios y restaurantes antes de producir", "responsible": "u1", "status": "identificado", "nextReview": "2026-08-31" },
+        { "id": "r4", "category": "financiero", "title": "Costos de alimento inflationados", "description": "Alimento representa 60-70% del costo operativo en acuicultura", "probability": "media", "impact": "alto", "mitigation": "Cotizar mínimo 3 proveedores + evaluar alternativo", "responsible": "u1", "status": "identificado", "nextReview": "2026-08-31" }
+      ],
+      "evidence": [],
+      "milestones": [
+        { "id": "m1", "phase": "descubrir", "title": "Verificación de permisos vigentes", "budgetMax": 2000, "responsible": "u1", "targetDate": "2026-07-20", "exitCondition": "Lista de permisos vigentes y su alcance", "evidenceRequired": ["Copias de permisos CONAPESCA/RNPA"], "dependencies": [], "mainRisk": "Permisos vencidos bloquean todo", "status": "pendiente" },
+        { "id": "m2", "phase": "validar", "title": "Análisis de agua", "budgetMax": 3000, "responsible": "u1", "targetDate": "2026-07-31", "exitCondition": "Informe con parámetros aptmos para tilapia", "evidenceRequired": ["Laboratorio certificados"], "dependencies": ["m1"], "mainRisk": "Agua no apta requiere tratamiento costoso", "status": "pendiente" },
+        { "id": "m3", "phase": "validar", "title": "Inventario de infraestructura", "budgetMax": 5000, "responsible": "u1", "targetDate": "2026-07-31", "exitCondition": "Estado de cada una de las 6 pozas", "evidenceRequired": ["Fotos + reporte de condición"], "dependencies": [], "mainRisk": "Pozas requieren reparación antes de uso", "status": "pendiente" }
+      ]
+    },
+    {
+      "id": "idea-003",
+      "name": "Vivero Técnico Cardel",
+      "description": "Producción de plantas de vivero para agroindustria, reforestación o venta a jardines y proyectos de paisaje en la zona de Cardel/Nautla.",
+      "problem": "Productores locales carece de acceso a viveros técnicos con variedades adaptadas al clima de Cardel, y existe demanda de proyectos de reforestación en la zona.",
+      "valueProposition": "Producción de plantas de vivero adaptadas localmente con potencial para venta a productores, proyectos gubernamentales y jardinería.",
+      "location": "cardel",
+      "category": "agricultura",
+      "state": "borrador",
+      "riskGlobal": "amarillo",
+      "priority": 3,
+      "responsible": "u1",
+      "dependencies": ["Definición de especies objetivo", "Evaluación de agua disponible", "Entrevistas con compradores potenciales"],
+      "assumptions": ["Agua suficiente paravivero", "Demanda existe en zona Cardel"],
+      "createdAt": "2026-06-15",
+      "updatedAt": "2026-07-05",
+      "lastAnalyzedAt": null,
+      "summary": {
+        "capexMin": null,
+        "timeToFirstSaleMonths": null,
+        "monthlyRevenueTarget": null,
+        "grossMarginPct": null,
+        "evidenceLevel": 0,
+        "nextStep": "Definir especies + entrevistar compradores potenciales + evaluar agua y suelo"
+      },
+      "commercial": {
+        "marketSizeTAM": null,
+        "marketSizeSAM": null,
+        "marketSizeSOM": null,
+        "targetClients": ["Productores agrícolas locales", "Programas de reforestación gubernamental", "Jardinería y paisajismo"],
+        "interviewsDone": 0,
+        "interestedClients": 0,
+        "paidPilots": 0,
+        "loiCount": 0,
+        "anchorClient": null,
+        "avgTicket": null,
+        "purchaseFrequency": "unica",
+        "salesChannel": "Por definir",
+        "competitors": ["Viveros en Xico/Coatepec", "Viveros federales"],
+        "differentiation": "Especies adaptadas al clima local + trazabilidad"
+      },
+      "operational": {
+        "teamRequired": ["Por definir"],
+        "spaceRequired": "Por definir según escala",
+        "utilities": { "water": true, "energy": true, "internet": false, "logistics": true },
+        "criticalSuppliers": ["Semillas/esquejes (por definir)"],
+        "headcount": null,
+        "maxMonthlyCapacity": null,
+        "bottlenecks": ["Disponibilidad de agua", "Plagas y enfermedades"],
+        "backupPlan": "Inicio a pequeña escala para validar"
+      },
+      "financial": {
+        "capexInitial": null,
+        "fixedCostsMonthly": null,
+        "variableCostPerUnit": null,
+        "salePrice": null,
+        "contributionMargin": null,
+        "contributionMarginPct": null,
+        "grossMargin": null,
+        "breakevenUnits": null,
+        "breakevenMonths": null,
+        "workingCapital": null,
+        "expectedAdvance": null,
+        "collectionDays": null,
+        "creditRequired": null,
+        "debtMonthlyPayment": null,
+        "cashReserve": null,
+        "scenarios": {
+          "pesimista": { "monthlyRevenue": 0, "monthlyVariableCosts": 0, "monthlyFixedCosts": 0, "ebitda": 0 },
+          "realista": { "monthlyRevenue": null, "monthlyVariableCosts": null, "monthlyFixedCosts": null, "ebitda": null },
+          "normal": { "monthlyRevenue": null, "monthlyVariableCosts": null, "monthlyFixedCosts": null, "ebitda": null },
+          "ideal": { "monthlyRevenue": null, "monthlyVariableCosts": null, "monthlyFixedCosts": null, "ebitda": null }
+        },
+        "assumptions": [],
+        "updatedAt": "2026-07-05"
+      },
+      "risks": [
+        { "id": "r1", "category": "comercial", "title": "Sin validación de demanda", "description": "No se han hecho entrevistas con compradores potenciales", "probability": "alta", "impact": "alto", "mitigation": "Antes de cualquier inversión, entrevistar 10 compradores potenciales", "responsible": "u1", "status": "identificado", "nextReview": "2026-09-30" }
+      ],
+      "evidence": [],
+      "milestones": [
+        { "id": "m1", "phase": "descubrir", "title": "Definir 3 especies objetivo", "budgetMax": 0, "responsible": "u1", "targetDate": "2026-08-31", "exitCondition": "3 especies con análisis de mercado básico", "evidenceRequired": ["Investigación de mercado"], "dependencies": [], "mainRisk": "Demanda no existe para la especie elegida", "status": "pendiente" }
+      ]
+    },
+    {
+      "id": "idea-004",
+      "name": "Inventario Digital para Talleres",
+      "description": "Servicio de digitalización de inventarios para talleres mecánicos y PyMEs industriales: escaneo de piezas, archivo digital, base de datos consultable y sistema de alertas de reorden.",
+      "problem": "Talleres en Cardel pierden tiempo buscando piezas, no tienen control de inventario y enfrentan tiempos muertos por falta de organización.",
+      "valueProposition": "Digitalización del inventario de talleres con plataforma consultable, alertas de stock mínimo y histórico de búsquedas.",
+      "location": "paxel80",
+      "category": "software",
+      "state": "investigacion",
+      "riskGlobal": "verde",
+      "priority": 1,
+      "responsible": "u1",
+      "dependencies": ["Plataforma web desarrollada", "Al menos 3 talleres interesados"],
+      "assumptions": ["Talleres tienen problema real con inventario", "Dispuestos a pagar por solución"],
+      "createdAt": "2026-06-20",
+      "updatedAt": "2026-07-08",
+      "lastAnalyzedAt": "2026-07-08",
+      "summary": {
+        "capexMin": 8000,
+        "timeToFirstSaleMonths": 1,
+        "monthlyRevenueTarget": 6000,
+        "grossMarginPct": 85,
+        "evidenceLevel": 1,
+        "nextStep": "Entrevistas con 10 talleres para validar problema + definir alcance mínimo viable"
+      },
+      "commercial": {
+        "marketSizeTAM": 2400000,
+        "marketSizeSAM": 360000,
+        "marketSizeSOM": 36000,
+        "targetClients": ["Talleres mecánicos Cardel", "Talleres de soldadura", "PyMEs industriales zona"],
+        "interviewsDone": 3,
+        "interestedClients": 2,
+        "paidPilots": 0,
+        "loiCount": 0,
+        "anchorClient": null,
+        "avgTicket": 500,
+        "purchaseFrequency": "mensual",
+        "salesChannel": "Visita directa + WhatsApp",
+        "competitors": ["Excellente, sistemas genéricos de inventario", "Hojas de cálculo"],
+        "differentiation": "Enfoque en talleres + simplicidad + precio accesible"
+      },
+      "operational": {
+        "teamRequired": ["1 persona para digitalización"],
+        "spaceRequired": "Oficina/home office",
+        "utilities": { "water": false, "energy": true, "internet": true, "logistics": false },
+        "criticalSuppliers": ["Hosting web"],
+        "headcount": 1,
+        "maxMonthlyCapacity": 20,
+        "bottlenecks": ["Velocidad de digitalización por taller"],
+        "backupPlan": "Subcontratar parte de la digitalización"
+      },
+      "financial": {
+        "capexInitial": 8000,
+        "fixedCostsMonthly": 900,
+        "variableCostPerUnit": 75,
+        "salePrice": 500,
+        "contributionMargin": 425,
+        "contributionMarginPct": 85,
+        "grossMargin": 85,
+        "breakevenUnits": 3,
+        "breakevenMonths": 1,
+        "workingCapital": 2700,
+        "expectedAdvance": 100,
+        "collectionDays": 30,
+        "creditRequired": 0,
+        "debtMonthlyPayment": 0,
+        "cashReserve": 2700,
+        "scenarios": {
+          "pesimista": { "monthlyRevenue": 2000, "monthlyVariableCosts": 300, "monthlyFixedCosts": 900, "ebitda": 800 },
+          "realista": { "monthlyRevenue": 6000, "monthlyVariableCosts": 900, "monthlyFixedCosts": 900, "ebitda": 4200 },
+          "normal": { "monthlyRevenue": 10000, "monthlyVariableCosts": 1500, "monthlyFixedCosts": 900, "ebitda": 7600 },
+          "ideal": { "monthlyRevenue": 15000, "monthlyVariableCosts": 2250, "monthlyFixedCosts": 900, "ebitda": 11850 }
+        },
+        "assumptions": [
+          { "key": "precio_mensual", "label": "Costo mensual por taller", "value": 500, "unit": "MXN", "confidence": "media" },
+          { "key": "num_talleres", "label": "Talleres objetivo en zona", "value": 20, "unit": "talleres", "confidence": "baja" }
+        ],
+        "updatedAt": "2026-07-08"
+      },
+      "risks": [
+        { "id": "r1", "category": "comercial", "title": "Adopción lenta", "description": "Talleres tradicionales pueden resistirse a digitalizar", "probability": "media", "impact": "medio", "mitigation": "Piloto gratuito en 1 taller + referral", "responsible": "u1", "status": "mitigando", "nextReview": "2026-08-31" },
+        { "id": "r2", "category": "tecnico", "title": "Plataforma no escalable", "description": "Solución manual no escala a muchos talleres", "probability": "baja", "impact": "medio", "mitigation": "Empezar simple, automatizar después según demanda", "responsible": "u1", "status": "identificado", "nextReview": "2026-10-31" }
+      ],
+      "evidence": [
+        { "id": "e1", "type": "entrevista", "date": "2026-07-01", "source": "Taller mecánico Cardel", "reliability": "media", "finding": "Tiene ~500 piezas sin control; pierde 30-60 min diarios buscando", "decisionAffected": "Problema real confirmado, continuar con más entrevistas" }
+      ],
+      "milestones": [
+        { "id": "m1", "phase": "validar", "title": "10 entrevistas a talleres", "budgetMax": 0, "responsible": "u1", "targetDate": "2026-08-15", "exitCondition": "Mínimo 5 talleres con problema confirmado", "evidenceRequired": ["Bitácora de entrevistas"], "dependencies": [], "mainRisk": "No encuentran valor suficiente", "status": "en_progreso" },
+        { "id": "m2", "phase": "pilotear", "title": "Prototipo de plataforma", "budgetMax": 8000, "responsible": "u1", "targetDate": "2026-09-30", "exitCondition": "1 taller usando la plataforma", "evidenceRequired": ["Captura de pantalla con uso activo"], "dependencies": ["m1"], "mainRisk": "Falla técnica en desarrollo", "status": "pendiente" }
+      ]
+    }
+  ]
+}
